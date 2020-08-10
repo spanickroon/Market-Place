@@ -1,8 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import View
 
-# Create your views here.
+
+class LoginView(View):
+    def get(self: object, request: object) -> object:
+        return render(request, template_name='authentication/login.html')
 
 
-def test(request: object):
-    return HttpResponse('test')
+class SingupView(View):
+    def get(self: object, request: object) -> object:
+        return render(request, template_name='authentication/singup.html')
