@@ -11,8 +11,9 @@ name_apps = 'account'
 
 
 urlpatterns = [
+    path('', LoginView.as_view()),
     path('login', LoginView.as_view(), name='login'),
-    path('singup', SingupView.as_view(), name='singup')
+    path('signup', SingupView.as_view(), name='signup')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

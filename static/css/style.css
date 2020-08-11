@@ -1,0 +1,16 @@
+* {
+    outline: none;
+}
+
+body, ::-moz-focus-outer, ::-moz-focus-inner {
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    display: none;
+}
+
+.active-page {
+    display: block;
+}
