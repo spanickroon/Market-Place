@@ -29,14 +29,29 @@ body {
     display: block;
 }
 
+input:required {
+    box-shadow:none;
+}
+
+.password-eye{
+    right: 5px;
+
+    height: 15px;
+    fill: #C4C4C4;
+}
+
+/*==================Authentification page===================*/
+
 .container-page-authentication {
+    position: absolute;
     display: grid;
 
-    grid-template-columns: auto 800px;
+    grid-template-columns: 500px 800px;
 
-    margin-top: 50px;
-    margin-left: 40px;
-    margin-right: 100px;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
 }
 
 .logo-container {
@@ -132,12 +147,32 @@ body {
 
 .authentication-div {
     position: relative;
+    display: flex;
+    align-items: center;
 
     height: 30px;
 
     margin-bottom: 20px;
 
-    border-bottom: solid 1px #C4C4C4;
+    border-bottom: solid 1px #2F048C;
+
+    transition-duration: .5s;
+}
+
+.authentication-input:not(:placeholder-shown) ~ svg,
+.authentication-div:hover svg {
+    fill: #2F048C;
+
+    transition-duration: .5s;
+}
+
+.authentication-input:not(:placeholder-shown) ~ label,
+.authentication-div:hover .authentication-label {
+    font-size: 14px;
+
+    color: #E461DC;
+   
+    transform: translate(0, -20px);
 }
 
 .authentication-div > * {
@@ -150,19 +185,25 @@ body {
 
 .img-form {
     height: 20px;
+
+    fill: #C4C4C4;
 }
 
 .authentication-label {
     font-size: 20px;
 
     color: #C4C4C4;
+
+    transition-duration: .5s;
 }
 
 .authentication-input {
     font-size: 18px;
+    font-weight: 400;
     
     border: none;
 
+    color: #2F048C;
     background-color: transparent;
 }
 
@@ -175,6 +216,11 @@ body {
     text-decoration: none;
 
     color: #C4C4C4;
+    transition-duration: 1s;
+}
+
+.authentication-nav:hover {
+    color: #2F048C;
 }
 
 .authentication-button {
@@ -191,7 +237,23 @@ body {
     border-radius: 20px;
 
     color: #FFFFFF;
-    background: linear-gradient(#E461DC, #2F048C);
+    background-color: #E461DC;
 
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+
+    transition-duration: 1s;
+}
+
+.authentication-button:hover {
+    background-color: #2F048C;
+
+    box-shadow: 5px 5px 4px rgba(47, 4, 140, 0.25);
+}
+
+.authentication-button:active {
+    background-color: #E461DC;
+
+    transition-duration: 0s;
+
+    box-shadow: 5px 5px 4px rgba(228, 97, 220, 0.25);
 }
