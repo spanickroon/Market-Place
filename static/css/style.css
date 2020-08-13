@@ -1,10 +1,24 @@
+@import "https://fonts.googleapis.com/css2?family=Alice&display=swap";
+
 * {
     outline: none;
+    font-family: Alice;
 }
 
-body, ::-moz-focus-outer, ::-moz-focus-inner {
+::-moz-focus-outer, ::-moz-focus-inner {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: linear-gradient(#E461DC, #2F048C);
+    background-image: url(/static/img/background.png);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .page {
@@ -13,4 +27,171 @@ body, ::-moz-focus-outer, ::-moz-focus-inner {
 
 .active-page {
     display: block;
+}
+
+.container-page-authentication {
+    display: grid;
+
+    grid-template-columns: auto 800px;
+
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 100px;
+}
+
+.logo-container {
+    display: flex;
+
+    flex-direction: column;
+
+    margin-top: 20px;
+}
+
+.img-logo {
+    height: 130px;
+}
+
+.label-logo {
+    font-weight: 400;
+    font-size: 48px;
+
+    text-align: center;
+
+    color: transparent;
+    background: linear-gradient(#E461DC, #2F048C);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-authentication {
+    display: flex;
+
+    width: 800px;
+    height: 500px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+    background-color: #FFFFFF;  
+
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+}
+
+.authentication-images {
+    position: relative;
+    
+    width: 50%;
+    height: 100%;
+}
+
+.img-wave {
+    position: absolute;
+    
+    height: 100%;
+    width: 100%;
+}
+
+.img-personalization {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+}
+
+.img-profile {
+    margin-top: 40px;
+
+    width: 80px;
+}
+
+.login-signup-container {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    height: 100%;
+    width: 50%;
+}
+
+.authentication-title {
+    font-weight: 600;
+}
+
+.authentication-form {
+    display: flex;
+    flex-direction: column;
+
+    width: 75%;
+}
+
+.authentication-div {
+    position: relative;
+
+    height: 30px;
+
+    margin-bottom: 20px;
+
+    border-bottom: solid 1px #C4C4C4;
+}
+
+.authentication-div > * {
+    position: absolute;
+}
+
+.authentication-div > label, input {
+    left: 30px;
+}
+
+.img-form {
+    height: 20px;
+}
+
+.authentication-label {
+    font-size: 20px;
+
+    color: #C4C4C4;
+}
+
+.authentication-input {
+    font-size: 18px;
+    
+    border: none;
+
+    background-color: transparent;
+}
+
+.authentication-nav {
+    width: 75%;
+
+    font-size: 18px;
+    font-weight: 400;
+    
+    text-decoration: none;
+
+    color: #C4C4C4;
+}
+
+.authentication-button {
+    width: 180px;
+    height: 40px;
+
+    margin-top: auto;
+    margin-bottom: 50px;
+
+    font-size: 20px;
+    font-weight: 400;
+
+    border: none;
+    border-radius: 20px;
+
+    color: #FFFFFF;
+    background: linear-gradient(#E461DC, #2F048C);
+
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
 }

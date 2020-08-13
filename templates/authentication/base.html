@@ -1,4 +1,19 @@
-<a class="nav-target" data-target="login"  href="#">Вход</a>
-<a class="nav-target" data-target="signup" href="#">Регистрация</a>
-{% block content %}
-{% endblock%}
+{% load static %}
+<div class=container-page-authentication>
+    <div class="logo-container">
+        <img class="img-logo" src="{% static 'img/logo.svg' %}" alt="">
+        <label class="label-logo" for="...">PLOTUS STORE</label>
+    </div>
+    <div class="container-authentication">
+        <div class="authentication-images">
+            <img class="img-wave" src="{% static 'img/wave.png' %}" alt="">
+            <img class="img-personalization" src="{% static 'img/personalization.svg' %}" alt="">
+        </div>
+        <div class="login-signup-container">
+            <img class="img-profile" src="{% static 'img/profile.svg' %}" alt="">
+            <h1 class="authentication-title">WELCOME</h1>
+            {% block content %}
+            {% endblock%}
+        </div>
+    </div>
+</div>

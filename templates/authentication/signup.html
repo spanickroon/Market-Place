@@ -1,4 +1,27 @@
 {% extends 'authentication/base.html'%}
+{% load static%}
 {% block content %}
-signup
+<form method="POST" class="authentication-form">
+    <div class="authentication-div">
+        <img class="img-form" src="{% static 'img/form-user.svg' %}" alt="">
+        <label class="authentication-label" for="...">Username</label>
+        <input class="authentication-input" type="text">
+    </div>
+    <div class="authentication-div">
+        <img class="img-form" src="{% static 'img/form-password.svg' %}" alt="">
+        <label class="authentication-label" for="...">Password</label>
+        <input class="authentication-input" type="password">
+    </div>
+    <div class="authentication-div">
+        <img class="img-form" src="{% static 'img/form-password.svg' %}" alt="">
+        <label class="authentication-label" for="...">Password</label>
+        <input class="authentication-input" type="password">
+    </div>
+</form>
+<a class="authentication-nav nav-target" data-target="login"  href="#">
+    Already have an account?
+    <br/>
+    Login!
+</a>
+<button class="authentication-button">SignUp</button>
 {% endblock%}
