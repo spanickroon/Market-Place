@@ -25,3 +25,43 @@ function showHidePassword3(target) {
     showHidePassword(target, input);
     return false;
 }
+
+let invalidPopup = document.getElementById('invalid-popup');
+let invalidPopupSignUp = document.getElementById('invalid-popup-signup');
+
+var passwordText = "The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 6"
+
+
+setUpInvalidPopUp(invalidPopup, document.getElementById('input-login'));
+setUpInvalidPopUp(invalidPopup, document.getElementById('input-password-login'), passwordText);
+
+setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-login-signup'));
+setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup'), passwordText);
+setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup-repeat'), passwordText);
+
+function setUpInvalidPopUp (target, element, text) {
+    element.onblur = element.onmouseout = removeInvalidPopUp;
+    element.onfocus = element.onkeyup = element.onmouseover = addInvalidPopUp;   
+
+    function removeInvalidPopUp () {
+        target.classList.remove('visible-popup');
+    }
+
+    function addInvalidPopUp() {
+        moveAt(target, element);
+
+        target.classList.add('visible-popup');
+        target.textContent = text === undefined ? element.validationMessage: text;
+        
+        if (element.checkValidity() || element.value === "") {
+            removeInvalidPopUp();
+        }
+        console.log(element);    
+    }
+
+    function moveAt(target, element) {
+        target.style.top = element.offsetParent.offsetTop + element.offsetParent.offsetHeight * 1.3 + 'px';
+        target.style.left = element.offsetParent.offsetLeft + 'px';
+    }
+}
+

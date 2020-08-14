@@ -1,9 +1,10 @@
 {% extends 'authentication/base.html'%}
 {% load static%}
 {% block content %}
-<form method="POST" class="authentication-form">
+<form id="signup-form" method="POST" class="authentication-form">
+    {% csrf_token %}
     <div class="authentication-div">
-        <input id="input-login-signup" class="authentication-input" type="text" placeholder=" " maxlength="17" required>
+        <input id="input-login-signup" class="authentication-input" type="text" placeholder=" " maxlength="17" minlength="5" title=" " required>
         <svg class="img-form" width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0)">
             <path d="M10.5098 12C13.827 12 16.5154 9.31406 16.5154 6C16.5154 2.68594 13.827 0 10.5098 0C7.19265 0 4.5042 2.68594 4.5042 6C4.5042 9.31406 7.19265 12 10.5098 12ZM14.7137 13.5H13.9302C12.8886 13.9781 11.7297 14.25 10.5098 14.25C9.28992 14.25 8.13571 13.9781 7.08943 13.5H6.30588C2.82451 13.5 0 16.3219 0 19.8V21.75C0 22.9922 1.00875 24 2.2521 24H18.7675C20.0109 24 21.0196 22.9922 21.0196 21.75V19.8C21.0196 16.3219 18.1951 13.5 14.7137 13.5Z"/>
@@ -17,7 +18,7 @@
         <label class="authentication-label" for="...">Username</label>
     </div>
     <div class="authentication-div">
-        <input id="input-password-signup" class="authentication-input" type="password" placeholder=" " maxlength="21" required>
+        <input id="input-password-signup" class="authentication-input" type="password" placeholder=" " maxlength="21" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title=" " required>
         <svg class="img-form" width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0)">
             <path d="M18.7259 10.5H17.6023V7.125C17.6023 3.19687 14.4096 0 10.4865 0C6.56342 0 3.37066 3.19687 3.37066 7.125V10.5H2.2471C1.00652 10.5 0 11.5078 0 12.75V21.75C0 22.9922 1.00652 24 2.2471 24H18.7259C19.9665 24 20.973 22.9922 20.973 21.75V12.75C20.973 11.5078 19.9665 10.5 18.7259 10.5ZM13.8571 10.5H7.11583V7.125C7.11583 5.26406 8.62794 3.75 10.4865 3.75C12.345 3.75 13.8571 5.26406 13.8571 7.125V10.5Z"/>
@@ -32,7 +33,7 @@
         <svg class="password-eye" onclick="return showHidePassword2(this);" aria-hidden="true" focusable="false" data-prefix="far" data-icon="eye" class="svg-inline--fa fa-eye fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"></path></svg>
     </div>
     <div class="authentication-div">
-        <input id="input-password-signup-repeat" class="authentication-input" type="password" placeholder=" " maxlength="21" required>
+        <input id="input-password-signup-repeat" class="authentication-input" type="password" placeholder=" " maxlength="21" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title=" " required>
         <svg class="img-form" width="21" height="24" viewBox="0 0 21 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0)">
             <path d="M18.7259 10.5H17.6023V7.125C17.6023 3.19687 14.4096 0 10.4865 0C6.56342 0 3.37066 3.19687 3.37066 7.125V10.5H2.2471C1.00652 10.5 0 11.5078 0 12.75V21.75C0 22.9922 1.00652 24 2.2471 24H18.7259C19.9665 24 20.973 22.9922 20.973 21.75V12.75C20.973 11.5078 19.9665 10.5 18.7259 10.5ZM13.8571 10.5H7.11583V7.125C7.11583 5.26406 8.62794 3.75 10.4865 3.75C12.345 3.75 13.8571 5.26406 13.8571 7.125V10.5Z"/>
@@ -46,11 +47,12 @@
         <label class="authentication-label" for="...">Password</label>
         <svg class="password-eye" onclick="return showHidePassword3(this);" aria-hidden="true" focusable="false" data-prefix="far" data-icon="eye" class="svg-inline--fa fa-eye fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"></path></svg>
     </div>
+    <div id="invalid-popup-signup" class="invalid-popup"></div>
 </form>
 <a class="authentication-nav nav-target" data-target="login"  href="#">
     Already have an account?
     <br/>
     Login!
 </a>
-<button class="authentication-button">SignUp</button>
+<button form="signup-form" type="submit" class="authentication-button">SignUp</button>
 {% endblock%}
