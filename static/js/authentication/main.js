@@ -37,9 +37,9 @@ setUpInvalidPopUp(invalidPopup, document.getElementById('input-password-login'),
 
 setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-login-signup'));
 setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup'), passwordText);
-setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup-repeat'), passwordText);
+setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup-repeat'), passwordText, true);
 
-function setUpInvalidPopUp (target, element, text) {
+function setUpInvalidPopUp (target, element, text, passwordRepeat) {
     element.onblur = element.onmouseout = removeInvalidPopUp;
     element.onfocus = element.onkeyup = element.onmouseover = addInvalidPopUp;   
 
@@ -52,11 +52,28 @@ function setUpInvalidPopUp (target, element, text) {
 
         target.classList.add('visible-popup');
         target.textContent = text === undefined ? element.validationMessage: text;
+
+        if (passwordRepeat !== undefined) {
+            checkValidityPasswordRepeat(target, element, text);
+        }
         
         if (element.checkValidity() || element.value === "") {
             removeInvalidPopUp();
+        }  
+
+        function checkValidityPasswordRepeat(target, element, text) {
+            if (element.value !== document.getElementById('input-password-signup').value) {
+                var regexp = new RegExp('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}');
+                if (regexp.exec(element.value)) {
+                    element.setCustomValidity('Password mismatch');
+                } else {
+                    element.setCustomValidity(text);
+                }
+                target.textContent = element.validationMessage;
+            } else {
+                element.setCustomValidity('');
+            }
         }
-        console.log(element);    
     }
 
     function moveAt(target, element) {
@@ -64,4 +81,3 @@ function setUpInvalidPopUp (target, element, text) {
         target.style.left = element.offsetParent.offsetLeft + 'px';
     }
 }
-
