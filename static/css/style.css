@@ -38,6 +38,8 @@ input:required {
 
     height: 15px;
     fill: #C4C4C4;
+
+    z-index: 2;
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -89,7 +91,7 @@ input:required {
     top: -19px; 
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) {
+@media screen and (min-width: 768px) {
     .invalid-popup {
         border-radius: 6px;
         padding: 6px;
@@ -238,6 +240,7 @@ input:required {
 }
 
 .authentication-input:not(:placeholder-shown) ~ svg,
+.authentication-input:focus ~ svg,
 .authentication-div:hover svg {
     fill: #2F048C;
 
@@ -245,6 +248,7 @@ input:required {
 }
 
 .authentication-input:not(:placeholder-shown) ~ label,
+.authentication-input:focus ~ label,
 .authentication-div:hover .authentication-label {
     font-size: 14px;
 
@@ -275,6 +279,8 @@ input:required {
     color: #C4C4C4;
 
     transition-duration: .5s;
+
+    z-index: 1;
 }
 
 .authentication-input {
@@ -285,6 +291,8 @@ input:required {
 
     color: #2F048C;
     background-color: transparent;
+
+    z-index: 2;
 }
 
 .authentication-nav {
@@ -391,6 +399,7 @@ input:required {
     }
     
     .authentication-input:not(:placeholder-shown) ~ label,
+    .authentication-input:focus ~ label,
     .authentication-div:hover .authentication-label {
         font-size: 8px;
         transform: translate(0, -12px);
@@ -436,5 +445,125 @@ input:required {
     
     .authentication-button:active {    
         box-shadow: 4px 4px 3px rgba(228, 97, 220, 0.25);
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .container-page-authentication {    
+        grid-template-columns: 300px;
+        grid-template-rows: auto auto;
+
+        grid-row-gap: 50px;
+
+        top: 3%;
+        transform: translate(-50%, 0);
+    }
+    
+    .logo-container {
+        margin-top: 5px;
+    }
+    
+    .img-logo {
+        height: 80px;
+    }
+    
+    .label-logo {
+        font-weight: 400;
+        font-size: 20px;
+    
+        text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+    }
+    
+    .container-authentication {
+        width: 300px;
+        height: 400px; 
+    
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+    }
+    
+    .img-profile {
+        margin-top: 15px;
+    
+        width: 60px;
+    }
+    
+    .authentication-title {
+        font-size: 20px;
+    
+        padding: 10px;
+    }
+
+    .authentication-images {
+        position: absolute;
+        visibility: hidden;
+    }
+    
+    .login-signup-container {
+        display: flex;
+        flex-direction: column;
+    
+        align-items: center;
+
+        margin-top: 0;
+    
+        height: 100%;
+        width: 100%;
+    }
+
+    .authentication-div {
+        height: 32px;
+
+        margin-bottom: 20px;
+    }
+    
+    .authentication-input:not(:placeholder-shown) ~ label,
+    .authentication-input:focus ~ label,
+    .authentication-div:hover .authentication-label {
+        font-size: 14px;
+       
+        transform: translate(0, -20px);
+    }
+    
+    .authentication-div > label, input {
+        left: 30px;
+    }
+    
+    .img-form {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .authentication-label {
+        font-size: 20px;
+    }
+    
+    .authentication-input {
+        font-size: 18px;
+    }
+    
+    .authentication-nav {
+        font-size: 18px;
+        font-weight: 400;
+    }
+    
+    .authentication-button {
+        width: 160px;
+        height: 40px;
+
+        margin-bottom: 25px;
+    
+        font-size: 18px;
+
+        border-radius: 20px;
+
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+    }
+    
+    .authentication-button:hover {
+        box-shadow: 2px 2px 1px rgba(47, 4, 140, 0.25);
+    }
+    
+    .authentication-button:active {
+        box-shadow: 2px 2px 1px rgba(228, 97, 220, 0.25);
     }
 }
