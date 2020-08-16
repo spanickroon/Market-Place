@@ -27,7 +27,13 @@ body {
     }
 }
 
-@media screen and (min-width: 320px) and (max-width: 420px) {
+@media screen and (min-width: 425px) and (max-width: 767px) {
+    body {
+        background-size: auto;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
     body {
         background-size: auto;
     }
@@ -45,7 +51,7 @@ input:required {
     box-shadow:none;
 }
 
-.password-eye{
+.password-eye {
     right: 5px;
 
     height: 15px;
@@ -58,6 +64,13 @@ input:required {
     .password-eye{
         right: 3px;
         height: 9px;
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 767px) {
+    .password-eye {
+        right: 2px;
+        height: 5px;
     }
 }
 
@@ -103,7 +116,7 @@ input:required {
     top: -19px; 
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 961px){
     .invalid-popup {
         border-radius: 6px;
         padding: 6px;
@@ -126,7 +139,28 @@ input:required {
         top: -11px; 
     }
 }
-  
+
+@media screen and (min-width: 426px) and (max-width: 767px) {
+    .invalid-popup {
+        border-radius: 3px;
+        padding: 3px;
+    
+        font-size: 6px;
+    }
+    
+    .invalid-popup::before, .invalid-popup::after {
+        left: 3px; top: -7px;
+        
+        border: 3px solid transparent;
+        border-bottom: 3px solid #2F048C;
+    }
+    
+    .invalid-popup::after {
+        border-bottom: 4px solid #2F048C;
+        top: -6px; 
+    }
+}
+
 /*--------------------Authentification page-----------------*/
 
 .container-page-authentication {
@@ -460,12 +494,113 @@ input:required {
     }
 }
 
+@media screen and (min-width: 426px) and (max-width: 767px) {
+    .container-page-authentication {
+        grid-template-columns: 156px 250px;
+    }
+    
+    .logo-container {
+        margin-top: 6px;
+    }
+    
+    .img-logo {
+        height: 41px;
+    }
+    
+    .label-logo {
+        font-size: 15px;
+    
+        text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+    }
+    
+    .container-authentication {
+        width: 250px;
+        height: 156px;
+    
+        border-radius: 3px;
+    
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+    }
+    
+    .img-personalization {
+        height: 78px;
+    }
+
+    .img-profile {
+        margin-top: 12px;
+    
+        width: 16px;
+    }
+    
+    .authentication-title {
+        font-size: 10px;
+    
+        padding: 6px 6px;
+    }
+    
+    .authentication-div {
+        height: 10px;
+    
+        margin-bottom: 6px;
+    }
+    
+    .authentication-input:not(:placeholder-shown) ~ label,
+    .authentication-input:focus ~ label,
+    .authentication-div:hover .authentication-label {
+        font-size: 4px;
+       
+        transform: translate(0, -6px);
+    }
+    
+    .authentication-div > label, input {
+        left: 10px;
+    }
+    
+    .img-form {
+        width: 6px;
+        height: 6px;
+    }
+    
+    .authentication-label {
+        font-size: 6px;
+    }
+    
+    .authentication-input {
+        font-size: 5px;
+    }
+    
+    .authentication-nav {
+        font-size: 5px;
+    }
+    
+    .authentication-button {
+        width: 60px;
+        height: 13px;
+    
+        margin-bottom: 16px;
+    
+        font-size: 6px;
+    
+        border-radius: 6px;
+
+        box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.25);
+    }
+    
+    .authentication-button:hover {
+        box-shadow: 2px 2px 1px rgba(47, 4, 140, 0.25);
+    }
+    
+    .authentication-button:active {
+        box-shadow: 2px 2px 1px rgba(228, 97, 220, 0.25);
+    }
+}
+
 @media screen and (min-width: 320px) and (max-width: 425px) {
     .container-page-authentication {    
         grid-template-columns: 300px;
         grid-template-rows: auto auto;
 
-        grid-row-gap: 30px;
+        grid-row-gap: 10px;
 
         top: 1%;
         transform: translate(-50%, 0);
