@@ -4,14 +4,21 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import ProfileView
+from .views import (
+    StocksView, ProfileView, NotificationsView,
+    PasswordView, StockGrowthView, ExchangeRatesView)
 
 
 name_apps = 'marketplace'
 
 
 urlpatterns = [
-    path('profile', ProfileView.as_view(), name='profile')
+    path('stocks', StocksView.as_view(), name='stocks'),
+    path('profile', ProfileView.as_view(), name='profile'),
+    path('notifications', NotificationsView.as_view(), name='notifications'),
+    path('password', PasswordView.as_view(), name='password'),
+    path('stockgrowth', StockGrowthView.as_view(), name='stockgrowth'),
+    path('exchangerates', ExchangeRatesView.as_view(), name='exchangerates')
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
