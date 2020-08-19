@@ -241,7 +241,7 @@ input:required {
     transform: translate(-50%, -50%);
 }
 
-.img-profile {
+.img-profile-start {
     margin-top: 40px;
 
     width: 80px;
@@ -719,16 +719,30 @@ input:required {
 
 .dashboard {
     position: absolute;
+    display: flex;
     
+    align-items: center;
+    justify-content: flex-end;
+
     top: 0;
     left: 22%;
 
     width: 78%;
     height: 60px;
+    
+    padding-right: 40px;
 
-    background-color: rgba(158, 12, 144, 0.9);
+    background-color: rgba(158, 12, 144, 1);
 
     z-index: 1;
+}
+
+.dashboard > a {
+    font-size: 24px;
+    font-weight: 400;
+    text-decoration: none;
+
+    color: #FFFFFF;
 }
 
 .nav-bar {
@@ -802,8 +816,59 @@ input:required {
 
     width: 78%;
     height: calc(100% - 60px);
+}
 
-    background-image: url(/static/img/background-content.png);
-    background-size: cover;
-    background-attachment: fixed;
+.profile-container {
+    display: grid;
+
+    grid-template-columns: 150px 260px;
+    grid-template-rows: repeat(2, 150px);
+
+    grid-column-gap: 20px;
+
+    align-items: center;
+
+    margin-top: 50px;
+    margin-left: 100px;
+    padding: 20px;
+
+    width: 450px;
+    height: 300px;
+
+    background-color: rgba(108, 23, 23, 0.5);
+
+    border-radius: 20px;
+}
+
+.img-profile {
+    height: 150px;
+    width: 150px;
+
+    border-radius: 75px;
+
+    overflow: hidden;
+}
+
+.img-profile img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info > label {
+    font-size: 28px;
+    font-weight: 400;
+
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+
+    color: #FFFFFF;
 }
