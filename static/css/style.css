@@ -819,6 +819,183 @@ input:required {
     height: calc(100% - 60px);
 }
 
+/*--------------------Stock page----------------------------*/
+
+.stocks-container {
+    display: grid;
+
+    grid-template-columns: repeat(4, 200px);
+    grid-template-rows: repeat(2, 250px);
+
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+    margin-top: 20px;
+    margin-left: 100px;
+
+    width: 830px;
+    height: 510px;
+}
+
+.stock-article {
+    color: white;
+    background-color: #232323;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+}
+
+.stock-article-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 200px;
+    height: 400px;
+}
+
+.stock-article .stock-article-container > label {
+    display: block;
+    text-align: center;
+}
+
+.stock-article:hover .stock-article-container > * {
+    visibility: visible;
+    opacity: 1;
+}
+
+.img-stock {
+    width: 140px;
+    height: 140px;
+    margin-top: 20px;
+
+    transition-duration: 1s;
+}
+
+.stock-name {
+    font-weight: 400;
+    font-size: 28px;
+
+    color: transparent;
+    background: linear-gradient(#E461DC, #2F048C);
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    transition-duration: 1s;
+}
+
+.stock-price {
+    visibility: hidden;
+    opacity: 0;
+
+    font-weight: 400;
+    font-size: 24px;
+
+    transition-duration: 1s;
+}
+
+.stock-profitability {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+
+    font-weight: 400;
+    font-size: 20px;
+
+    transition-duration: 1s;
+}  
+
+.stock-counter {
+    visibility: hidden;
+    opacity: 0;
+
+    font-weight: 400;
+    font-size: 20px;
+
+    margin-top: 10px;
+
+    width: 50px;
+    height: 35px;
+
+    text-align: center;
+
+    transition-duration: 1s;
+
+    -webkit-appearance: textfield;
+       -moz-appearance: textfield;
+            appearance: textfield;
+}
+
+.stock-button {
+    visibility: hidden;
+    opacity: 0;
+
+    width: 120px;
+    height: 30px;
+
+    margin-top: 10px;
+
+    font-weight: 400;
+    font-size: 18px;
+
+    border: none;
+    border-radius: 20px;
+
+    color: #FFFFFF;
+    background-color: #E461DC;
+
+    transition-duration: 1s;
+}  
+
+.stock-button:hover {
+    background-color: #2F048C;
+
+    box-shadow: 5px 5px 4px rgba(47, 4, 140, 0.25);
+}
+
+.stock-button:active {
+    background-color: #E461DC;
+
+    transition-duration: 0s;
+
+    box-shadow: 5px 5px 4px rgba(228, 97, 220, 0.25);
+}
+
+.stock-article:hover .img-stock {
+    transform: translate(-65px, -55px) scale(0.5);
+}
+
+.stock-article:hover .stock-name {
+    color: #E461DC;
+
+    font-size: 30px;
+
+    transform: translate(0, -100px);
+}
+
+.stock-article:hover .stock-price {
+    transform: translate(0, -100px);
+
+    transition-delay: 0.5s;
+}
+
+.stock-article:hover .stock-profitability {
+    transform: translate(0, -100px);
+    transition-delay: 0.6s;
+}
+
+.stock-article:hover .stock-counter {
+    transform: translate(0, -100px);
+    transition-delay: 0.7s;
+}
+
+.stock-article:hover .stock-button {
+    transform: translate(0, -90px);
+    transition-delay: 0.8s;
+}
+
 /*--------------------Profile page--------------------------*/
 
 .profile-article {
@@ -917,6 +1094,5 @@ input:required {
 
     border-radius: 5px;
 }
-
 
 /*--------------------Password page--------------------------*/
