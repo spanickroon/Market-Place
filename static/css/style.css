@@ -805,10 +805,11 @@ input:required {
 }
 
 .nav-links > a:hover {
-    background-color: #B98500;
+    background-color: #E461DC;
 }
 
 .content-container {
+    display: flex;
     position: absolute;
 
     top: 60px;
@@ -818,24 +819,27 @@ input:required {
     height: calc(100% - 60px);
 }
 
-.profile-container {
+/*--------------------Profile page--------------------------*/
+
+.profile-article {
     display: grid;
 
-    grid-template-columns: 150px 260px;
-    grid-template-rows: repeat(2, 150px);
+    grid-template-columns: 150px 250px;
+    grid-template-rows: 150px 80px;
 
     grid-column-gap: 20px;
+    grid-row-gap: 50px;
 
     align-items: center;
 
-    margin-top: 50px;
-    margin-left: 100px;
+    margin-top: 20px;
+    margin-left: 80px;
     padding: 20px;
 
-    width: 450px;
-    height: 300px;
+    width: 440px;
+    height: 480px;
 
-    background-color: rgba(108, 23, 23, 0.5);
+    background-color: #232323;
 
     border-radius: 20px;
 }
@@ -866,9 +870,53 @@ input:required {
     font-size: 28px;
     font-weight: 400;
 
+    margin-bottom: 10px;
+
     white-space: nowrap; 
     overflow: hidden; 
     text-overflow: ellipsis; 
 
     color: #FFFFFF;
 }
+
+.additional-profile-info {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.additional-profile-info > label {
+    font-size: 24px;
+}
+
+.mystocks-article {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 20px;
+    margin-left: 80px;
+    padding: 20px;
+
+    width: 300px;
+    height: 480px;
+
+    background-color: #232323;
+
+    border-radius: 20px;
+
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.mystocks-article::-webkit-scrollbar {
+    width: 10px;
+    scroll-padding: 10px;
+}
+
+.mystocks-article::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
+
+    border-radius: 5px;
+}
+
+
+/*--------------------Password page--------------------------*/

@@ -1,17 +1,21 @@
 {% extends 'marketplace/base.html'%}
 {% load static%}
 {% block content %}
-<article class="profile-container">
+<article class="profile-article">
     <div class="img-profile">
         <img src="{% static 'img/profile.svg' %}" alt="">
     </div>
     <div class="profile-info">
-        <label for="...">wwwwwwwwwwwwwwwwwwwwwwww</label>
+        <label for="...">spanickroon</label>
         <label for="...">14000$</label>
     </div>
-    <div>
+    <div class="profile-info additional-profile-info">
         <label for="...">Amount of deals: </label>
         <label for="...">Income per minute: </label>
     </div>
+    <button class="authentication-button">Edit</button>
+</article>
+
+<article class="mystocks-article">
 </article>
 {% endblock%}

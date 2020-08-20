@@ -29,7 +29,7 @@ function showHidePassword3(target) {
 let invalidPopup = document.getElementById('invalid-popup');
 let invalidPopupSignUp = document.getElementById('invalid-popup-signup');
 
-var passwordText = "The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 6"
+let passwordText = "The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 6"
 
 
 setUpInvalidPopUp(invalidPopup, document.getElementById('input-login'));
