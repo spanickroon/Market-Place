@@ -30,3 +30,8 @@ class StockGrowthView(View):
 class ExchangeRatesView(View):
     def get(self: object, request: object) -> object:
         return render(request, template_name='index.html')
+
+
+class EditProfileView(View):
+    def get(self: object, request: object) -> object:
+        return render(request, template_name='index.html')
