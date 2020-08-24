@@ -809,13 +809,12 @@ input:required {
 }
 
 .content-container {
-    position: absolute;
-
-    top: 60px;
-    left: 280px;
+    display: flow-root;
+    margin-top: 60px;
+    margin-left: 280px;
 
     width: calc(100% - 280px);
-    height: calc(100% - 60px);
+    height: auto;
 }
 
 /*--------------------Stock page----------------------------*/
@@ -837,7 +836,7 @@ input:required {
 }
 
 .stock-article {
-    color: white;
+    color: #FFFFFF;
     background-color: #232323;
 
     overflow: hidden;
@@ -1109,3 +1108,20 @@ input:required {
 }
 
 /*--------------------Password page--------------------------*/
+
+.password-container {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    margin-left: 100px;
+    margin-top: 10px;
+
+    width: 300px;
+    height: 450px;
+    
+    border-radius: 20px;
+    
+    background-color: #FFFFFF;
+}

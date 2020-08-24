@@ -37,9 +37,9 @@ setUpInvalidPopUp(invalidPopup, document.getElementById('input-password-login'),
 
 setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-login-signup'));
 setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup'), passwordText);
-setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup-repeat'), passwordText, true);
+setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup-repeat'), passwordText, true, document.getElementById('input-password-signup'));
 
-function setUpInvalidPopUp (target, element, text, passwordRepeat) {
+function setUpInvalidPopUp (target, element, text, passwordRepeat, passwordTeplate) {
     element.onblur = element.onmouseout = removeInvalidPopUp;
     element.onfocus = element.onkeyup = element.onmouseover = addInvalidPopUp;   
 
@@ -54,15 +54,15 @@ function setUpInvalidPopUp (target, element, text, passwordRepeat) {
         target.textContent = text === undefined ? element.validationMessage: text;
 
         if (passwordRepeat !== undefined) {
-            checkValidityPasswordRepeat(target, element, text);
+            checkValidityPasswordRepeat(target, element, text, passwordTeplate);
         }
         
         if (element.checkValidity() || element.value === "") {
             removeInvalidPopUp();
         }  
 
-        function checkValidityPasswordRepeat(target, element, text) {
-            if (element.value !== document.getElementById('input-password-signup').value) {
+        function checkValidityPasswordRepeat(target, element, text, passwordTeplate) {
+            if (element.value !== passwordTeplate.value) {
                 var regexp = new RegExp('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}');
                 if (regexp.exec(element.value)) {
                     element.setCustomValidity('Password mismatch');
