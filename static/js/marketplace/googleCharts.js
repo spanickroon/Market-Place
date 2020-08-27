@@ -31,7 +31,6 @@ function drawChart() {
 
         data.addRow([year++, Math.floor(Math.random() * 1000) + 1000, Math.floor(Math.random() * 400) + 400]);
         chart.draw(data, options);
-        console.log(data);
     }
    
     var i = 1;                  
