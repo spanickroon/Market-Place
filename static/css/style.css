@@ -14,6 +14,17 @@
     padding: 0;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+    scroll-padding: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
+
+    border-radius: 5px;
+}
+
 body {
     background: linear-gradient(#E461DC, #2F048C);
     background-image: url(/static/img/background.png);
@@ -837,7 +848,7 @@ input:required {
 
 .stock-article {
     color: #FFFFFF;
-    background-color: #232323;
+    background-color: rgba(35, 35, 35, 0.9);
 
     overflow: hidden;
 
@@ -1028,7 +1039,7 @@ input:required {
     width: 440px;
     height: 480px;
 
-    background-color: #232323;
+    background-color: rgba(35, 35, 35, 0.9);
 
     border-radius: 20px;
 }
@@ -1088,7 +1099,7 @@ input:required {
     width: 300px;
     height: 480px;
 
-    background-color: #232323;
+    background-color: rgba(35, 35, 35, 0.9);
 
     border-radius: 20px;
 
@@ -1096,15 +1107,94 @@ input:required {
     overflow-y: scroll;
 }
 
-.mystocks-article::-webkit-scrollbar {
-    width: 10px;
-    scroll-padding: 10px;
+/*--------------------Notification page----------------------*/
+
+.notification-info-panel {
+    display: grid;
+    grid-template-columns: 40px 150px 130px 130px 420px;
+    align-items: center;
+
+    margin-top: 10px;
+    margin-left: 100px;
+
+    padding-left: 17px;
+    padding-right: 10px;
+
+    width: 900px;
+    height: 30px;
+
+    border-radius: 20px;
+
+    background-color: rgba(35, 35, 35, 0.9);
 }
 
-.mystocks-article::-webkit-scrollbar-thumb {
-    background-color: #FFFFFF;
+.notification-info-panel > label {
+    color: #FFFFFF;
+    text-align: center;
+}
 
-    border-radius: 5px;
+.list-notifications-container {
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-top: 10px;
+    margin-left: 100px;
+
+    width: 900px;
+    height: 500px;
+
+    overflow: hidden;
+    overflow-y: scroll;
+
+    border-radius: 20px;
+
+    background-color: rgba(35, 35, 35, 0.9);
+}
+
+.notification {
+    display: grid;
+    grid-template-columns: 40px 150px 130px 130px 420px;
+    
+    align-items: center;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    width: 850px;
+    height: 40px;
+
+    border-radius: 20px;
+
+    background-color: #FFFFFF;
+}
+
+.notification > label, p {
+    font-size: 24px;
+    font-weight: 400;
+    
+}
+
+.notification > label {
+    text-align: center;
+}
+
+.notification-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    font-size: 24px !important;
+
+    text-align: center;
+
+    border-radius: 40px;
+
+    color: #FFFFFF;
+    background-color: #9C2394;
 }
 
 /*--------------------Password page--------------------------*/
@@ -1123,5 +1213,26 @@ input:required {
     
     border-radius: 20px;
     
-    background-color: #FFFFFF;
+    background-color: rgba(35, 35, 35, 0.9);
+}
+
+.password-div {
+    border-bottom: solid 1px #FFFFFF;
+}
+
+.password-title,
+.password-div input {
+    color: #FFFFFF
+}
+
+.password-input:not(:placeholder-shown) ~ svg,
+.password-input:focus ~ svg,
+.password-div:hover svg {
+    fill:  #FFFFFF;
+}
+
+.password-input:not(:placeholder-shown) ~ label,
+.password-input:focus ~ label,
+.password-div:hover .authentication-label {
+    color: #E461DC;
 }
