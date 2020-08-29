@@ -1268,7 +1268,16 @@ input:required {
     color: #FFFFFF;
 
     border-radius: 20px;
-    border: 2px dashed #ccc;
+    border: 2px dashed #FFFFFF;
+
+    transition-duration: .2s;
+}
+
+#drop-area:hover {
+    color: #C4C4C4;
+
+    border-radius: 20px;
+    border: 2px dashed #C4C4C4;
 }
 
 #fileElem {

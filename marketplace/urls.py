@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 
 from .views import (
     StocksView, ProfileView, NotificationsView,
-    PasswordView, StockGrowthView, ExchangeRatesView, EditProfileView)
+    PasswordView, StockGrowthView, EditProfileView)
 
 
 name_apps = 'marketplace'
@@ -18,7 +18,6 @@ urlpatterns = [
     path('notifications', NotificationsView.as_view(), name='notifications'),
     path('password', PasswordView.as_view(), name='password'),
     path('stockgrowth', StockGrowthView.as_view(), name='stockgrowth'),
-    path('exchangerates', ExchangeRatesView.as_view(), name='exchangerates'),
     path('editprofile', EditProfileView.as_view(), name='editprofile')
 ]
 
