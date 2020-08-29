@@ -729,7 +729,7 @@ input:required {
 /*--------------------Navigation----------------------------*/
 
 .dashboard {
-    position: absolute;
+    position: fixed;
     display: flex;
     
     align-items: center;
@@ -757,7 +757,7 @@ input:required {
 }
 
 .nav-bar {
-    position: absolute;
+    position: fixed;
 
     top: 0;
     left: 0;
@@ -1301,4 +1301,36 @@ input:required {
 .editprofile-input:focus ~ svg,
 .editprofile-div:hover svg {
     fill:  #FFFFFF;
+}
+
+/*--------------------Stockgrowth page----------------------*/
+
+#stockgrowth-charts {
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.img-profile {
+    height: 150px;
+    width: 150px;
+
+    border-radius: 75px;
+
+    overflow: hidden;
+}
+
+.stockgrowth-container {
+    display: flex;
+
+    margin-top: 10px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+
+    width: 900px;
+
+    height: 400px;
+
+    border-radius: 20px;
+    background-color: transparent;
+    overflow: hidden;
 }
