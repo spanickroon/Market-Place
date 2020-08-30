@@ -1185,7 +1185,94 @@ input:required {
 }
 
 @media screen and (min-width: 426px) and (max-width: 767px) {
-
+    .stocks-container {    
+        grid-template-columns: repeat(4, 62px);
+        grid-template-rows: repeat(2, 75px);
+    
+        grid-column-gap: 10px;
+        grid-row-gap: 5px;
+    
+        margin-top: 10px;
+        margin-left: 30px;
+    
+        width: 278px;
+        height: 180px;
+    }
+    
+    .stock-article {
+        border-radius: 10px;
+    }
+    
+    .stock-article-container {
+        width: 62px;
+    }
+    
+    .img-stock {
+        width: 44px;
+        height: 44px;
+        margin-top: 10px;
+    }
+    
+    .stock-name {
+        font-size: 9px;
+    }
+    
+    .stock-price {
+        font-size: 8px;
+    }
+    
+    .stock-profitability {
+        font-size: 7px;
+    }  
+    
+    .stock-button {
+        width: 40px;
+        height: 10px;
+    
+        margin-top: 10px;
+    
+        font-size: 7px;
+    
+        border-radius: 10px;
+    }  
+    
+    .stock-article:hover .img-stock {
+        transform: translate(-20px, -22px) scale(0.5);
+    }
+    
+    .stock-article:hover .stock-name {
+        font-size: 10px;
+    
+        transform: translate(0, -32px);
+    }
+    
+    .stock-article:hover .stock-price {
+        transform: translate(0, -30px);
+    }
+    
+    .stock-article:hover .stock-profitability {
+        transform: translate(0, -30px);
+    }
+    
+    .stock-article:hover .stock-button {
+        transform: translate(0, -35px);
+    }
+    
+    .paggination-bar {
+        margin-top: 5px;
+        margin-right: calc(100% - 308px);
+    }
+    
+    .paggination-button {
+        margin-left: 4px;
+    
+        width: 12px;
+        height: 12px;
+    
+        font-size: 8px;
+    
+        border-radius: 3px;
+    }
 }
 
 /*--------------------Profile page--------------------------*/
