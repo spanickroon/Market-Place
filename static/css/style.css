@@ -38,13 +38,13 @@ body {
     }
 }
 
-@media screen and (min-width: 425px) and (max-width: 767px) {
+@media screen and (min-width: 426px) and (max-width: 767px) {
     body {
         background-size: auto;
     }
 }
 
-@media screen and (min-width: 320px) and (max-width: 426px) {
+@media screen and (min-width: 320px) and (max-width: 425px) {
     body {
         background-size: auto;
     }
@@ -1437,7 +1437,6 @@ input:required {
     color: #FFFFFF;
     background-color: #9C2394;
     
-
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
 
     transition-duration: 1s;
@@ -1455,6 +1454,108 @@ input:required {
     transition-duration: 0s;
 
     box-shadow: 5px 5px 4px rgba(228, 97, 220, 0.25);
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .profile-article {
+        grid-template-columns: 85px 165px;
+        grid-template-rows: 85px 20px;
+    
+        grid-column-gap: 12px;
+        grid-row-gap: 30px;
+    
+        margin-top: 10px;
+        margin-left: 60px;
+        padding: 12px;
+    
+        width: 290px;
+        height: 285px;
+    
+        border-radius: 20px;
+    }
+    
+    .img-profile {
+        height: 85px;
+        width: 85px;
+    
+        border-radius: 42.5px;
+    }
+    
+    .profile-info > label {
+        font-size: 16px;
+    
+        margin-bottom: 10px;
+    }
+    
+    .additional-profile-info > label {
+        font-size: 14px;
+    }
+    
+    .mystocks-article {
+        grid-template-columns: 180px;
+    
+        margin-top: 10px;
+        margin-left: 40px;
+        
+        width: 180px;
+        height: 285px;
+    
+        border-radius: 20px;
+    }
+    
+    .mystock {
+        grid-template-columns: 50px 85px;
+        grid-template-rows: repeat(3, 35px);
+
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 10px;
+    
+        width: 155px;
+        height: 125px;
+    
+        border-radius: 20px;
+    }
+    
+    .img-mystock {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .mystock-name {
+        font-size: 16px;
+    }
+    
+    .mystock-count {
+        font-size: 11px;
+    }
+    
+    .mystock-price {
+        font-size: 13px;
+    }
+    
+    .mystock-profitability {
+        font-size: 9px;
+    }
+    
+    .mystock-button {
+        width: 60px;
+        height: 20px;
+    
+        font-size: 9px;
+    
+        border-radius: 20px;
+    
+        box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.25);
+    }
+    
+    .mystock-button:hover {
+        box-shadow: 4px 4px 3px rgba(47, 4, 140, 0.25);
+    }
+    
+    .mystock-button:active {
+        box-shadow: 4px 4px 3px rgba(228, 97, 220, 0.25);
+    }
 }
 
 /*--------------------Notification page---------------------*/
@@ -1658,15 +1759,6 @@ input:required {
 #stockgrowth-charts {
     overflow: hidden;
     overflow-y: scroll;
-}
-
-.img-profile {
-    height: 150px;
-    width: 150px;
-
-    border-radius: 75px;
-
-    overflow: hidden;
 }
 
 .stockgrowth-container {
