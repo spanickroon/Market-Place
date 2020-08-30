@@ -1558,6 +1558,108 @@ input:required {
     }
 }
 
+@media screen and (min-width: 426px) and (max-width: 767px) {
+    .profile-article {
+        grid-template-columns: 50px 80px;
+        grid-template-rows: 50px 10px;
+    
+        grid-column-gap: 10px;
+        grid-row-gap: 20px;
+    
+        margin-top: 10px;
+        margin-left: 30px;
+        padding: 10px;
+    
+        width: 170px;
+        height: 150px;
+    
+        border-radius: 10px;
+    }
+    
+    .img-profile {
+        height: 50px;
+        width: 50px;
+    
+        border-radius: 25px;
+    }
+    
+    .profile-info > label {
+        font-size: 9px;
+    
+        margin-bottom: 10px;
+    }
+    
+    .additional-profile-info > label {
+        font-size: 7px;
+    }
+    
+    .mystocks-article {
+        grid-template-columns: 120px;
+    
+        margin-top: 10px;
+        margin-left: 20px;
+        
+        width: 120px;
+        height: 150px;
+    
+        border-radius: 10px;
+    }
+    
+    .mystock {
+        grid-template-columns: 30px 40px;
+        grid-template-rows: repeat(3, 17px);
+    
+        margin-top: 6px;
+        margin-bottom: 6px;
+        padding: 6px;
+    
+        width: 80px;
+        height: 65px;
+    
+        border-radius: 10px;
+    }
+    
+    .img-mystock {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .mystock-name {
+        font-size: 8px;
+    }
+    
+    .mystock-count {
+        font-size: 6px;
+    }
+    
+    .mystock-price {
+        font-size: 7px;
+    }
+    
+    .mystock-profitability {
+        font-size: 5px;
+    }
+    
+    .mystock-button {
+        width: 32px;
+        height: 10px;
+    
+        font-size: 5px;
+    
+        border-radius: 10px;
+    
+        box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.25);
+    }
+    
+    .mystock-button:hover {
+        box-shadow: 3px 3px 2px rgba(47, 4, 140, 0.25);
+    }
+    
+    .mystock-button:active {
+        box-shadow: 3px 3px 2px rgba(228, 97, 220, 0.25);
+    }
+}
+
 /*--------------------Notification page---------------------*/
 
 .notification-info-panel {
