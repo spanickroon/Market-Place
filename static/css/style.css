@@ -1725,7 +1725,6 @@ input:required {
 .notification > label, p {
     font-size: 24px;
     font-weight: 400;
-    
 }
 
 .notification > label {
@@ -1748,6 +1747,58 @@ input:required {
 
     color: #FFFFFF;
     background-color: #9C2394;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .notification-info-panel {
+        grid-template-columns: 25px 85px 75px 75px 240px;
+    
+        margin-top: 10px;
+        margin-left: 60px;
+    
+        padding-left: 17px;
+        padding-right: 10px;
+    
+        width: 500px;
+        height: 30px;
+    
+        border-radius: 15px;
+    }
+    
+    .list-notifications-container {
+        margin-top: 10px;
+        margin-left: 60px;
+    
+        width: 500px;
+        height: 315px;
+    
+        border-radius: 15px;
+    }
+    
+    .notification {
+        grid-template-columns: 25px 85px 75px 75px 240px;
+    
+        margin-top: 5px;
+        margin-bottom: 5px;
+    
+        width: 460px;
+        height: 25px;
+    
+        border-radius: 15px;
+    }
+    
+    .notification > label, p {
+        font-size: 14px;
+    }
+    
+    .notification-number {
+        width: 25px;
+        height: 25px;
+    
+        font-size: 16px !important;
+    
+        border-radius: 25px;
+    }
 }
 
 /*--------------------Password page-------------------------*/
