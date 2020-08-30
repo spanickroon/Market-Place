@@ -1684,6 +1684,9 @@ input:required {
 .notification-info-panel > label {
     color: #FFFFFF;
     text-align: center;
+
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .list-notifications-container {
@@ -1765,6 +1768,10 @@ input:required {
         border-radius: 15px;
     }
     
+    .notification-info-panel > label {
+        font-size: 12px;
+    }
+
     .list-notifications-container {
         margin-top: 10px;
         margin-left: 60px;
@@ -1798,6 +1805,62 @@ input:required {
         font-size: 16px !important;
     
         border-radius: 25px;
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 767px) {
+    .notification-info-panel {
+        grid-template-columns: 13px 50px 40px 40px 130px;
+    
+        margin-top: 10px;
+        margin-left: 30px;
+    
+        padding-left: 13px;
+        padding-right: 5px;
+    
+        width: 273px;
+        height: 20px;
+    
+        border-radius: 10px;
+    }
+    
+    .notification-info-panel > label {
+        font-size: 8px;
+    }
+
+    .list-notifications-container {
+        margin-top: 10px;
+        margin-left: 30px;
+    
+        width: 273px;
+        height: 170px;
+    
+        border-radius: 10px;
+    }
+    
+    .notification {
+        grid-template-columns: 13px 50px 40px 40px 130px;
+    
+        margin-top: 2px;
+        margin-bottom: 2px;
+    
+        width: 260px;
+        height: 15px;
+    
+        border-radius: 10px;
+    }
+    
+    .notification > label, p {
+        font-size: 8px;
+    }
+    
+    .notification-number {
+        width: 13px;
+        height: 13px;
+    
+        font-size: 8px !important;
+    
+        border-radius: 13px;
     }
 }
 
