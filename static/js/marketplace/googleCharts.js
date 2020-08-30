@@ -3,6 +3,18 @@ google.charts.load('current', {'packages':['corechart']});
 let res1 = randomValues20(3200);
 let res2 = randomValues20(3200);
 
+function getWindowSizes() {
+    if (window.innerWidth >= 992) {
+       return {width: 900, height: 400, fontTitle: 24, fontAxis: 22, fontValue: 16}
+    } else if (window.innerWidth >= 768) {
+        return {width: 500, height: 250, fontTitle: 14, fontAxis: 12, fontValue: 10}
+    } else if (window.innerWidth >= 426) {
+        return {width: 280, height: 125, fontTitle: 8, fontAxis: 7, fontValue: 6}
+    } else {
+        return {width: 900, height: 400, fontTitle: 24, fontAxis: 22, fontValue: 16}
+    }
+}
+
 function setUpCharts() {
     page = document.getElementById('stockgrowth-charts');
 
@@ -40,11 +52,14 @@ function drawChart(charts) {
         charts[chart].values.push(lastElelement);
 
         var newDate = new Date();
+        var sizes = getWindowSizes();
         var options = {
+            width: sizes.width,
+            height: sizes.height,
             title: `${charts[chart].title}.\nDate ${('0' + newDate.getDate()).slice(-2)}.${('0' + newDate.getMonth()).slice(-2)}.${newDate.getFullYear()} ${('0' + newDate.getHours()).slice(-2)}:${('0' + newDate.getMinutes()).slice(-2)}:${('0' + newDate.getSeconds()).slice(-2)}. Price ${lastElelement[1]}$`,
             titleTextStyle: {
                 color: '#FFFFFF',
-                fontSize: 24,
+                fontSize: sizes.fontTitle,
                 bold: false
             },
             hAxis: {
@@ -54,11 +69,11 @@ function drawChart(charts) {
                 },
                 titleTextStyle: {
                     color: '#FFFFFF',
-                    fontSize: 22
+                    fontSize: sizes.fontAxis
                 },
                 textStyle: {
                     color: '#FFFFFF',
-                    fontSize: 16
+                    fontSize: sizes.fontValue
                 },
                 slantedText: true, 
                 slantedTextAngle: 45
@@ -68,11 +83,11 @@ function drawChart(charts) {
                 minValue: 0,
                 titleTextStyle: {
                     color: '#FFFFFF',
-                    fontSize: 22
+                    fontSize: sizes.fontAxis
                 },
                 textStyle: {
                     color: '#FFFFFF',
-                    fontSize: 14
+                    fontSize: sizes.fontValue
                 },            
             },   
             legend : { position: 'none'},
