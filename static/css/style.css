@@ -1982,6 +1982,72 @@ input:required {
     fill:  #FFFFFF;
 }
 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .editprofile-container {
+        margin-top: 10px;
+        margin-left: 60px;
+        padding-top: 10px;
+    
+        width: 170px;
+        height: 250px;
+    
+        border-radius: 15px;
+    }
+    
+    #drop-area {    
+        margin-top: 10px;
+    
+        height: 30px;
+        width: 140px;
+    
+        font-size: 10px;
+    
+        border-radius: 15px;
+    }
+    
+    #drop-area:hover {
+        border-radius: 15px;
+    }
+    
+    .editprofile-div {
+        margin-top: 25px;
+        width: 140px;
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 767px) {
+    .editprofile-container {
+        margin-top: 7px;
+        margin-left: 30px;
+        padding-top: 7px;
+    
+        width: 150px;
+        height: 150px;
+    
+        border-radius: 10px;
+    }
+    
+    #drop-area {    
+        margin-top: 7px;
+    
+        height: 20px;
+        width: 100px;
+    
+        font-size: 7px;
+    
+        border-radius: 10px;
+    }
+    
+    #drop-area:hover {
+        border-radius: 10px;
+    }
+    
+    .editprofile-div {
+        margin-top: 15px;
+        width: 100px;
+    }
+}
+
 /*--------------------Stockgrowth page----------------------*/
 
 #stockgrowth-charts {
