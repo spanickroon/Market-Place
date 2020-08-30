@@ -1089,14 +1089,13 @@ input:required {
 }
 
 .mystocks-article {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 320px;
 
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 80px;
-    padding: 20px;
-
-    width: 300px;
+    
+    width: 320px;
     height: 480px;
 
     background-color: rgba(35, 35, 35, 0.9);
@@ -1105,6 +1104,97 @@ input:required {
 
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+.mystock {
+    display: grid;
+    grid-template-columns: 90px 150px;
+    grid-template-rows: repeat(3, 70px);
+
+    justify-self: center;
+    align-items: center;
+    
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    width: 260px;
+    height: 220px;
+
+    border-radius: 20px;
+
+    background-color: #FFFFFF;
+}
+
+.mystock-block {
+    display: flex;
+    flex-direction: column;
+
+    z-index: 2;
+}
+
+.img-mystock {
+    width: 60px;
+    height: 60px;
+}
+
+.mystock-name {
+    font-size: 26px;
+    font-weight: 500;
+
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.mystock-count {
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.mystock-price {
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.mystock-profitability {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.mystock-button {
+    justify-self: end;
+
+    width: 100px;
+    height: 30px;
+
+    font-size: 16px;
+    font-weight: 400;
+
+    border: none;
+    border-radius: 20px;
+
+    color: #FFFFFF;
+    background-color: #9C2394;
+    
+
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+
+    transition-duration: 1s;
+}
+
+.mystock-button:hover {
+    background-color: #E461DC;
+   
+    box-shadow: 5px 5px 4px rgba(47, 4, 140, 0.25);
+}
+
+.mystock-button:active {
+    background-color: #2F048C;
+
+    transition-duration: 0s;
+
+    box-shadow: 5px 5px 4px rgba(228, 97, 220, 0.25);
 }
 
 /*--------------------Notification page---------------------*/
@@ -1327,10 +1417,10 @@ input:required {
     margin-left: 100px;
 
     width: 900px;
-
     height: 400px;
 
     border-radius: 20px;
     background-color: transparent;
+
     overflow: hidden;
 }

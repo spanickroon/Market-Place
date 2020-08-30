@@ -18,6 +18,27 @@
     </article>
     
     <article class="mystocks-article">
+        {% for item in 12345678|make_list %}
+        <div class="mystock">
+            <img class="img-mystock" src="{% static 'img/cannabis-solid-black.svg'%}" alt="">
+            <div class="mystock-block">
+                <label class="mystock-name" for="...">Cannabis</label>
+                <label class="mystock-count" for="...">Count: 12</label>
+            </div>
+            
+            <div class="mystock-block">
+                <label class="mystock-price" for="...">3200$</label>
+                <label class="mystock-profitability" for="...">0.32$/min</label>
+            </div>
+            <button class="mystock-button">Sell one</button>
+            
+            <div class="mystock-block">
+                <label class="mystock-price" for="...">38400$</label>
+                <label class="mystock-profitability" for="...">3.84$/min</label>
+            </div>
+            <button class="mystock-button">Sell all</button>
+        </div>
+        {% endfor %}
     </article>
 </div>
 {% endblock%}
