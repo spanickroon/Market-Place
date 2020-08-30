@@ -1094,6 +1094,97 @@ input:required {
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
+    .stocks-container {    
+        grid-template-columns: repeat(4, 120px);
+        grid-template-rows: repeat(2, 140px);
+    
+        grid-column-gap: 10px;
+        grid-row-gap: 5px;
+    
+        margin-top: 10px;
+        margin-left: 55px;
+    
+        width: 530px;
+        height: 310px;
+    }
+    
+    .stock-article {
+        border-radius: 20px;
+    }
+    
+    .stock-article-container {
+        width: 120px;
+    }
+    
+    .img-stock {
+        width: 80px;
+        height: 80px;
+        margin-top: 20px;
+    }
+    
+    .stock-name {
+        font-size: 16px;
+    }
+    
+    .stock-price {
+        font-size: 14px;
+    }
+    
+    .stock-profitability {
+        font-size: 12px;
+    }  
+
+    .stock-button {
+        width: 70px;
+        height: 20px;
+    
+        margin-top: 10px;
+
+        font-size: 10px;
+    
+        border-radius: 20px;
+    }  
+    
+    .stock-article:hover .img-stock {
+        transform: translate(-36px, -32px) scale(0.5);
+    }
+    
+    .stock-article:hover .stock-name {
+        font-size: 18px;
+    
+        transform: translate(0, -56px);
+    }
+    
+    .stock-article:hover .stock-price {
+        transform: translate(0, -55px);
+    }
+    
+    .stock-article:hover .stock-profitability {
+        transform: translate(0, -50px);
+    }
+    
+    .stock-article:hover .stock-button {
+        transform: translate(0, -50px);
+    }
+    
+    .paggination-bar {
+        margin-top: 5px;
+        margin-right: calc(100% - 565px);
+    }
+    
+    .paggination-button {
+        margin-left: 6px;
+    
+        width: 25px;
+        height: 25px;
+    
+        font-size: 12px;
+    
+        border-radius: 5px;
+    }
+}
+
+@media screen and (min-width: 426px) and (max-width: 767px) {
 
 }
 
