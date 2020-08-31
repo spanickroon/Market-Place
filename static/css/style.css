@@ -1314,7 +1314,7 @@ input:required {
 
 @media screen and (min-width: 320px) and (max-width: 425px) {
     .stocks-container {
-        grid-template-columns: repeat(1, 200px);
+        grid-template-columns: repeat(1, 240px);
         grid-template-rows: repeat(8, 220px);
     
         grid-column-gap: 10px;
@@ -1325,7 +1325,7 @@ input:required {
 
         transform: translate(-50%, 0);
     
-        width: 210px;
+        width: 250px;
         height: 450px;
 
         overflow: hidden;
@@ -1337,7 +1337,7 @@ input:required {
     }
     
     .stock-article-container {
-        width: 200px;
+        width: 240px;
         height: 400px;
     }
     
@@ -1794,7 +1794,7 @@ input:required {
 
         padding: 10px;
     
-        width: 220px;
+        width: 250px;
         height: 300px;
     
         border-radius: 15px;
@@ -1818,13 +1818,13 @@ input:required {
     }
     
     .mystocks-article {
-        grid-template-columns: 220px;
+        grid-template-columns: 250px;
     
         margin-top: 10px;
         margin-left: calc(50% + 20px);
         transform: translate(-50%, 0);
         
-        width: 220px;
+        width: 250px;
         height: 170px;
     
         border-radius: 15px;
@@ -2089,6 +2089,76 @@ input:required {
     }
 }
 
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .notification-info-panel {
+        grid-template-columns: 25px 85px 65px 65px 240px;
+    
+        margin-top: 10px;
+        margin-left: calc(50% + 20px);
+        transform: translate(-50%, 0);
+    
+        padding-left: 5px;
+        padding-right: 5px;
+    
+        width: 250px;
+        height: 30px;
+    
+        border-radius: 15px;
+
+        overflow: hidden;
+    }
+    
+    .notification-info-panel > label {
+        font-size: 12px;
+    }
+
+    .list-notifications-container {
+        margin-top: 10px;
+        margin-left: calc(50% + 20px);
+        transform: translate(-50%, 0);
+    
+        width: 250px;
+        height: 330px;
+    
+        border-radius: 15px;
+    }
+    
+    .notification {
+        grid-template-columns: 25px 85px 65px 65px;
+        grid-template-rows: 25px;
+    
+        margin-top: 5px;
+        margin-bottom: 5px;
+    
+        width: 240px;
+        height: 45px;
+    
+        border-radius: 15px;
+    }
+    
+    .notification > label, p {
+        font-size: 14px;
+    }
+
+    .notification > p {
+        grid-column-start: 1;
+        grid-column-end: 5;
+
+        text-align: center;
+
+        margin-bottom: 5px;
+    }
+    
+    .notification-number {
+        width: 25px;
+        height: 25px;
+    
+        font-size: 16px !important;
+    
+        border-radius: 25px;
+    }
+}
+
 /*--------------------Password page-------------------------*/
 
 .password-container {
@@ -2153,7 +2223,7 @@ input:required {
         transform: translate(-50%, 0);
         margin-top: 10px;
     
-        width: 220px;
+        width: 250px;
         height: 350px;
         
         border-radius: 15px;
@@ -2297,7 +2367,7 @@ input:required {
         
         padding-top: 10px;
     
-        width: 220px;
+        width: 250px;
         height: 350px;
     
         border-radius: 15px;
