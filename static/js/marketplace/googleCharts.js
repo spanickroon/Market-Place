@@ -11,7 +11,7 @@ function getWindowSizes() {
     } else if (window.innerWidth >= 426) {
         return {width: 280, height: 125, fontTitle: 8, fontAxis: 7, fontValue: 4}
     } else {
-        return {width: 900, height: 400, fontTitle: 24, fontAxis: 22, fontValue: 16}
+        return {width: 250, height: 160, fontTitle: 8.5, fontAxis: 7, fontValue: 6}
     }
 }
 
