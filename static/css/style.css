@@ -1329,99 +1329,18 @@ input:required {
         width: 200px;
         height: 510px;
 
-        overflow: scroll;
+        overflow: hidden;
+        overflow-x: scroll;
     }
     
     .stock-article {
-        color: #FFFFFF;
-        background-color: rgba(35, 35, 35, 0.9);
-    
-        overflow: hidden;
-    
-        border-radius: 20px;
+        border-radius: 15px;
     }
     
     .stock-article-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    
         width: 200px;
         height: 400px;
     }
-    
-    .stock-article .stock-article-container > label {
-        display: block;
-        text-align: center;
-    }
-    
-    .stock-article:hover .stock-article-container > * {
-        visibility: visible;
-        opacity: 1;
-    }
-    
-    .img-stock {
-        width: 140px;
-        height: 140px;
-        margin-top: 20px;
-    
-        transition-duration: 1s;
-    }
-    
-    .stock-name {
-        font-weight: 400;
-        font-size: 28px;
-    
-        color: transparent;
-        background: linear-gradient(#E461DC, #2F048C);
-    
-        background-clip: text;
-        -webkit-background-clip: text;
-    
-        transition-duration: 1s;
-    }
-    
-    .stock-price {
-        visibility: hidden;
-        opacity: 0;
-    
-        font-weight: 400;
-        font-size: 24px;
-    
-        transition-duration: 1s;
-    }
-    
-    .stock-profitability {
-        display: block;
-        visibility: hidden;
-        opacity: 0;
-    
-        font-weight: 400;
-        font-size: 20px;
-    
-        transition-duration: 1s;
-    }  
-    
-    .stock-button {
-        visibility: hidden;
-        opacity: 0;
-    
-        width: 120px;
-        height: 30px;
-    
-        margin-top: 10px;
-    
-        font-weight: 400;
-        font-size: 18px;
-    
-        border: none;
-        border-radius: 20px;
-    
-        color: #FFFFFF;
-        background-color: #E461DC;
-    
-        transition-duration: 1s;
-    }  
     
     .stock-button:hover {
         background-color: #9C2394;
@@ -1446,59 +1365,27 @@ input:required {
     }
     
     .stock-article:hover .stock-price {
-        transform: translate(0, -80px);
+        transform: translate(0, -90px);
     
         transition-delay: 0.5s;
     }
     
     .stock-article:hover .stock-profitability {
-        transform: translate(0, -80px);
+        transform: translate(0, -90px);
         transition-delay: 0.6s;
     }
     
     .stock-article:hover .stock-button {
-        transform: translate(0, -60px);
-    
+        transform: translate(0, -80px);
     }
     
     .paggination-bar {
-        display: flex;
-        justify-content: flex-end;
-    
-        float: right;
-    
-        margin-top: 5px;
-        margin-right: calc(100% - 930px);
+        margin-top: -50px;
+        margin-right: -20px;
     }
     
     .paggination-button {
-        margin-left: 10px;
-    
-        width: 40px;
-        height: 40px;
-    
-        font-size: 20px;
-        font-weight: 400;
-    
-        border: none;
-        border-radius: 5px;
-    
-        color: #FFFFFF;
-        background-color: rgba(35, 35, 35, 0.8);
-    }
-    
-    .active-paggination-button {
-        background-color: rgba(156, 35, 148, 0.8);
-    }
-    
-    .paggination-button:hover {
-        color: #E461DC;
-        background-color: rgba(35, 35, 35, 1);
-    }
-    
-    .paggination-button:active {
-        color: #FFFFFF;
-        background-color: rgba(35, 35, 35, 0.3);
+        margin-left: 5px;
     }
 }
 
