@@ -2192,7 +2192,6 @@ input:required {
 #drop-area:hover {
     color: #C4C4C4;
 
-    border-radius: 20px;
     border: 2px dashed #C4C4C4;
 }
 
@@ -2242,10 +2241,6 @@ input:required {
         border-radius: 15px;
     }
     
-    #drop-area:hover {
-        border-radius: 15px;
-    }
-    
     .editprofile-div {
         margin-top: 25px;
         width: 140px;
@@ -2275,13 +2270,40 @@ input:required {
         border-radius: 10px;
     }
     
-    #drop-area:hover {
-        border-radius: 10px;
-    }
-    
     .editprofile-div {
         margin-top: 15px;
         width: 100px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 425px) {
+    .editprofile-container {
+        margin-top: 10px;
+        margin-left: calc(50% + 50px);
+        transform: translate(-50%, 0);
+        
+        padding-top: 10px;
+    
+        width: 220px;
+        height: 350px;
+    
+        border-radius: 10px;
+    }
+    
+    #drop-area {    
+        margin-top: 20px;
+    
+        height: 40px;
+        width: 180px;
+    
+        font-size: 16px;
+    
+        border-radius: 15px;
+    }
+    
+    .editprofile-div {
+        margin-top: 30px;
+        width: 180px;
     }
 }
 
