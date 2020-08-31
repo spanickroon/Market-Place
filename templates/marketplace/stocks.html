@@ -14,10 +14,10 @@
         </article>
     {% endfor %}
 </div>
-<div class="paggination-bar">
+<span class="paggination-bar">
     <button class="paggination-button active-paggination-button">1</button>
     {% for item in 2345|make_list %}
     <button class="paggination-button">{{item}}</button>
     {% endfor %}
-</div>
+</span>
 {% endblock%}
