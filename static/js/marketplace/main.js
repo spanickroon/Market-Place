@@ -1,12 +1,12 @@
-function showHidePassword4(target) {
+function showHiddenPasswordOnPasswordPage(target) {
     var input = document.getElementById('change-password-input');
-    showHidePassword(target, input);
+    showHiddenPassword(target, input);
     return false;
 }
 
-function showHidePassword5(target) {
+function showHiddenRepeatPasswordOnPasswordPage(target) {
     var input = document.getElementById('change-password-input-repeat');
-    showHidePassword(target, input);
+    showHiddenPassword(target, input);
     return false;
 }
 
