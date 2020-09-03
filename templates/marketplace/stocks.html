@@ -1,0 +1,23 @@
+{% extends 'marketplace/base.html'%}
+{% load static%}
+{% block content %}
+<div class="stocks-container">
+    {% for item in 12345678|make_list %}
+        <article class="stock-article">
+            <div class="stock-article-container">
+                <img class="img-stock" src="{% static 'img/cannabis-solid.png'%}" alt="">
+                <label class="stock-name" for="...">Cannabis</label>
+                <label class="stock-price" for="...">3200$</label>
+                <label class="stock-profitability" for="...">0.32$/min</label>
+                <button class="stock-button">Buy</button>
+            </div>
+        </article>
+    {% endfor %}
+</div>
+<span class="paggination-bar">
+    <button class="paggination-button active-paggination-button">1</button>
+    {% for item in 2345|make_list %}
+    <button class="paggination-button">{{item}}</button>
+    {% endfor %}
+</span>
+{% endblock%}

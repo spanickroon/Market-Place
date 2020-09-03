@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLOTUS STORE</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+    <div class="page" id="login">
+        {% include 'authentication/login.html' %}
+    </div>
+    <div class="page" id="signup">
+        {% include 'authentication/signup.html' %}
+    </div>
+    <div class="page" id="stocks">
+        {% include 'marketplace/stocks.html' %}
+    </div>
+    <div class="page" id="profile">
+        {% include 'marketplace/profile.html' %}
+    </div>
+    <div class="page" id="notifications">
+        {% include 'marketplace/notifications.html' %}
+    </div>
+    <div class="page" id="password">
+        {% include 'marketplace/password.html' %}
+    </div>
+    <div class="page" id="stockgrowth">
+        {% include 'marketplace/stockgrowth.html' %}
+    </div>
+    <div class="page" id="editprofile">
+        {% include 'marketplace/editprofile.html' %}
+    </div>
+</body>
+<script src="{% static "js/spa.js" %}"></script>
+<script src="{% static "js/authentication/main.js" %}"></script>
+<script src="{% static "js/marketplace/main.js" %}"></script>
+<script src="{% static "js/marketplace/googleCharts.js" %}"></script>
+<script src="{% static "js/marketplace/dragAndDrop.js" %}"></script>
+</html>

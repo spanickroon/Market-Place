@@ -1,0 +1,22 @@
+{% extends 'marketplace/base.html'%}
+{% load static%}
+{% block content %}
+<div class="notification-info-panel">
+    <label for="...">№</label>
+    <label for="...">Date</label>
+    <label for="...">Time</label>
+    <label for="...">Cost</label>
+    <label for="...">Message</label>
+</div>
+<div class="list-notifications-container">
+    {% for item in 1234567899999999|make_list %}
+    <div class="notification">
+        <label class="notification-number" for="...">{{item}}</label>
+        <label for="...">27.08.2020</label>
+        <label for="...">15:30:15</label>
+        <label for="...">3200$</label>
+        <p>Buying cannabis stock</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock%}
