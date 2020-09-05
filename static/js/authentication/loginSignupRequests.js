@@ -16,6 +16,27 @@ function getCookie(name) {
     return cookieValue;
 }
 
+function login(ev) {
+    ev.preventDefault();
+
+    fetch('login', 
+    {
+        method: 'POST',
+        body: 'username=' + document.getElementById('input-login').value + '&password=' + document.getElementById('input-password-login').value,
+        headers: {'content-type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCookie('csrftoken') },
+    })
+    .then(response => {
+        if (response.status !== 200) {
+            return Promise.reject(); 
+        }
+        return response.json()
+    })
+    .then(response => {
+        console.log(response['message'])
+    })
+    .catch(() => console.log('error response'));
+} 
+
 function signUp(ev) {
     ev.preventDefault();
 
@@ -38,4 +59,5 @@ function signUp(ev) {
 } 
 
 
+document.getElementById('login-button').addEventListener('click', login);
 document.getElementById('signup-button').addEventListener('click', signUp);

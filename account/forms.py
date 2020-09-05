@@ -5,6 +5,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
+class LoginForm(forms.Form):
+    """LoginForm class for login."""
+
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+
+
 class SignupForm(UserCreationForm):
     """SignupForm class with meta data for signup."""
 
