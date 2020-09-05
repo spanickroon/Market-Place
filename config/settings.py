@@ -67,8 +67,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 
-"""
-For work without internet
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DATABASE_ENGINE'),
@@ -79,7 +77,6 @@ DATABASES = {
         'PORT': os.environ.get('DATABASE_PORT')
     }
 }
-"""
 
 # Password validation
 
