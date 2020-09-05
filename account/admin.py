@@ -21,10 +21,4 @@ class AuthorAdmin(admin.ModelAdmin):
         default_manager_name = 'Profile'
 
     def save_model(self, request, obj, form, change):
-        """Conver avatar to avatar binary."""
-        try:
-            obj.avatar_binary = form.cleaned_data.get('avatar').read()
-        except AttributeError:
-            obj.avatar_binary = open('static/img/profile.svg', 'rb').read()
         obj.save()
-

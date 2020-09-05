@@ -7,8 +7,10 @@ class Profile(models.Model):
         User, on_delete=models.CASCADE,
         verbose_name='User')
 
-    avatar_binary = models.BinaryField(
-        verbose_name='Avatar binary', blank=True, editable=False)
+    avatar = models.ImageField(
+        default='profile.svg',
+        verbose_name='Avatar',
+        upload_to='profiles/', null=True, blank=True)
 
     balance = models.IntegerField(
         default=10000, blank=True,
@@ -24,9 +26,9 @@ class Profile(models.Model):
 
     class Meta:
         """Meta data."""
-        db_table = 'Users'
-        verbose_name = 'Users'
-        verbose_name_plural = 'Users'
+        db_table = 'Profile'
+        verbose_name = 'Profile'
+        verbose_name_plural = 'Profiles'
 
     def __str__(self) -> str:
         """Funtion for output info about this profile object."""

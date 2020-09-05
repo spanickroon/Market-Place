@@ -39,7 +39,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
 
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
@@ -114,8 +113,8 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-MEDIA_URL = 'images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_URL = 'img/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')

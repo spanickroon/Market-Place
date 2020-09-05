@@ -29,7 +29,7 @@ function showHiddenRepeatPasswordOnSignUpPage(target) {
 let invalidPopup = document.getElementById('invalid-popup');
 let invalidPopupSignUp = document.getElementById('invalid-popup-signup');
 
-let passwordText = "The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 6"
+let passwordText = 'The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 8'
 
 
 setUpInvalidPopUp(invalidPopup, document.getElementById('input-login'));
@@ -57,13 +57,13 @@ function setUpInvalidPopUp (target, element, text, passwordRepeat, passwordTepla
             checkValidityPasswordRepeat(target, element, text, passwordTeplate);
         }
         
-        if (element.checkValidity() || element.value === "") {
+        if (element.checkValidity() || element.value === '') {
             removeInvalidPopUp();
         }  
 
         function checkValidityPasswordRepeat(target, element, text, passwordTeplate) {
             if (element.value !== passwordTeplate.value) {
-                var regexp = new RegExp('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,}');
+                var regexp = new RegExp('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}');
                 if (regexp.exec(element.value)) {
                     element.setCustomValidity('Password mismatch');
                 } else {
