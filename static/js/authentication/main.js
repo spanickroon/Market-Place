@@ -26,10 +26,10 @@ function showHiddenRepeatPasswordOnSignUpPage(target) {
     return false;
 }
 
-let invalidPopup = document.getElementById('invalid-popup');
-let invalidPopupSignUp = document.getElementById('invalid-popup-signup');
+var invalidPopup = document.getElementById('invalid-popup');
+var invalidPopupSignUp = document.getElementById('invalid-popup-signup');
 
-let passwordText = 'The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 8'
+var passwordText = 'The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 8'
 
 
 setUpInvalidPopUp(invalidPopup, document.getElementById('input-login'));

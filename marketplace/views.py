@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 
 
 class StocksView(View):
+
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
@@ -13,14 +14,19 @@ class StocksView(View):
 
 
 class ProfileView(View):
+
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
         print(request.user.is_authenticated)
-        return render(request, template_name='index.html')
+        print(request.user.profile)
+        return render(
+            request, template_name='index.html',
+            context={'user': request.user})
 
 
 class NotificationsView(View):
+
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
@@ -28,6 +34,7 @@ class NotificationsView(View):
 
 
 class PasswordView(View):
+
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
@@ -35,6 +42,7 @@ class PasswordView(View):
 
 
 class StockGrowthView(View):
+
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
@@ -42,6 +50,7 @@ class StockGrowthView(View):
 
 
 class EditProfileView(View):
+
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:

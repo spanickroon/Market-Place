@@ -1,7 +1,7 @@
 google.charts.load('current', {'packages':['corechart']});
 
-let res1 = randomValues20(3200);
-let res2 = randomValues20(3200);
+var res1 = randomValues20(3200);
+var res2 = randomValues20(3200);
 
 function getWindowSizes() {
     if (window.innerWidth >= 992) {

@@ -1,4 +1,4 @@
-let dropArea = document.getElementById('drop-area');
+var dropArea = document.getElementById('drop-area');
 dropArea.addEventListener('drop', handleDrop, false);
 
 function dropHandler(ev) {

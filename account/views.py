@@ -10,6 +10,7 @@ from .services.authentication import AuthenticationHandler
 
 
 class LoginView(View):
+
     @method_decorator(csrf_protect)
     def get(self: object, request: object) -> object:
         logout(request)
@@ -28,6 +29,7 @@ class LoginView(View):
 
 
 class SingupView(View):
+
     @method_decorator(csrf_protect)
     def get(self: object, request: object) -> object:
         logout(request)
@@ -42,3 +44,10 @@ class SingupView(View):
 
         return JsonResponse(
             {'message': AuthenticationHandler.form_erors(signup_form)})
+
+    @method_decorator(csrf_protect)
+    def patch(self: object, request: object) -> object:
+        print('patch')
+        return render(
+            request, template_name='index.html',
+            context={'user': request.user})

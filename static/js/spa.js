@@ -1,5 +1,5 @@
 /*---------------SPA---------------*/
-const app = {
+var app = {
     pages: [],
     show: new Event('show'),
     init: function() {
@@ -23,13 +23,14 @@ const app = {
         document.getElementById(currentPage).classList.add('active-page');
         
         history.pushState({}, currentPage, currentPage);
-
         document.getElementById(currentPage).dispatchEvent(app.show);
     },
     poppin: function(ev) {
         let hash = location.pathname.replace('/', '');
         document.querySelector('.active-page').classList.remove('active-page');
         document.getElementById(hash).classList.add('active-page');
+
+        document.getElementById(currentPage).dispatchEvent(app.show);
     },
     pageShown: function(ev) {
         ev.preventDefault();
@@ -44,7 +45,7 @@ const app = {
             if (response.status !== 200) {
                 return Promise.reject(); 
             }
-            return response
+            return response;
         })
         .catch(() => console.log('error response'));
     }
