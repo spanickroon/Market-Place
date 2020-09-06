@@ -21,14 +21,19 @@ class AuthenticationHandler:
 
     @staticmethod
     def login_handler(request: object, login_form: object) -> object:
-        user = User.objects.get(username=login_form.cleaned_data['username'])
+        request_username = login_form.cleaned_data['username']
+
+        if not User.objects.filter(username=request_username).exists():
+            return JsonResponse({'message': 'User not found'})
+
+        user = User.objects.get(username=request_username)
 
         if not check_password(
                 login_form.cleaned_data['password'],
                 user.password):
-            return JsonResponse({'message': 'password_incorrect'})
+            return JsonResponse({'message': 'Incorrect password'})
 
-        # login(request, user)
+        login(request, user)
 
         return JsonResponse({'message': 'ok'})
 

@@ -30,8 +30,6 @@ const app = {
         let hash = location.pathname.replace('/', '');
         document.querySelector('.active-page').classList.remove('active-page');
         document.getElementById(hash).classList.add('active-page');
-
-        document.getElementById(hash).dispatchEvent(app.show);
     },
     pageShown: function(ev) {
         ev.preventDefault();
@@ -40,7 +38,7 @@ const app = {
         
         fetch(currentPage, {
             method: 'GET',
-            headers: {'content-type':'application/x-www-form-urlencoded'}
+            headers: {'content-type': 'application/x-www-form-urlencoded'},
         })
         .then(response => {
             if (response.status !== 200) {
@@ -57,9 +55,33 @@ window.onload=function() {
     let startPage = window.location.pathname;
     let currentPage = startPage.slice(1, startPage.length);
 
+    if (currentPage === '') {
+        history.replaceState({}, '', 'login');
+        currentPage = 'login';
+    }
+
     document.getElementById(currentPage).classList.add('active-page');
     document.getElementById(currentPage).dispatchEvent(app.show);
 }
 
 /*---------------DOM---------------*/
 document.addEventListener('DOMContentLoaded', app.init);
+
+/*--------CSRF protection----------*/
+function getCookie(name) {
+    var cookieValue = null;
+
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}

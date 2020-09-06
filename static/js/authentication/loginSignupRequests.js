@@ -1,21 +1,3 @@
-function getCookie(name) {
-    var cookieValue = null;
-
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
 function login(ev) {
     ev.preventDefault();
 
@@ -23,6 +5,7 @@ function login(ev) {
     {
         method: 'POST',
         body: 'username=' + document.getElementById('input-login').value + '&password=' + document.getElementById('input-password-login').value,
+        mode: 'same-origin',
         headers: {'content-type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCookie('csrftoken') },
     })
     .then(response => {
@@ -32,7 +15,10 @@ function login(ev) {
         return response.json()
     })
     .then(response => {
-        console.log(response['message'])
+        if (response['message'] === 'ok') {
+            app.nav(ev);
+        }
+        console.log(response['message']);
     })
     .catch(() => console.log('error response'));
 } 
@@ -53,11 +39,18 @@ function signUp(ev) {
         return response.json()
     })
     .then(response => {
-        console.log(response['message'])
+        if (response['message'] === 'ok') {
+            app.nav(ev);
+        }
+        console.log(response['message']);
     })
     .catch(() => console.log('error response'));
 } 
 
+function logout() {
+    console.log('logout');
+    return false;
+}
 
 document.getElementById('login-button').addEventListener('click', login);
 document.getElementById('signup-button').addEventListener('click', signUp);

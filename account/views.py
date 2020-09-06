@@ -2,15 +2,21 @@ from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
 from django.contrib.auth import logout
+from django.views.decorators.csrf import csrf_protect
+from django.utils.decorators import method_decorator
 
 from .forms import LoginForm, SignupForm
 from .services.authentication import AuthenticationHandler
 
 
 class LoginView(View):
+    @method_decorator(csrf_protect)
     def get(self: object, request: object) -> object:
+        logout(request)
+        print(request.user.is_authenticated)
         return render(request, template_name='index.html')
 
+    @method_decorator(csrf_protect)
     def post(self: object, request: object) -> object:
         login_form = LoginForm(request.POST)
 
@@ -22,9 +28,12 @@ class LoginView(View):
 
 
 class SingupView(View):
+    @method_decorator(csrf_protect)
     def get(self: object, request: object) -> object:
+        logout(request)
         return render(request, template_name='index.html')
 
+    @method_decorator(csrf_protect)
     def post(self: object, request: object) -> object:
         signup_form = SignupForm(request.POST)
 
@@ -33,9 +42,3 @@ class SingupView(View):
 
         return JsonResponse(
             {'message': AuthenticationHandler.form_erors(signup_form)})
-
-
-class LogoutView(View):
-    def get(self: object, request: object) -> object:
-        logout(request)
-        return render(request, template_name='index.html')
