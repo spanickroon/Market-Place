@@ -45,7 +45,22 @@ var app = {
             if (response.status !== 200) {
                 return Promise.reject(); 
             }
-            return response;
+            return response.text();
+        })
+        .then(response => {
+            parser = new DOMParser();
+            doc = parser.parseFromString(response, 'text/html');
+            document.querySelector('.active-page').innerHTML = doc.getElementById(currentPage).innerHTML;
+            
+            setUpAuthentication();
+            setUpMarketplace();
+            
+            document.getElementById('login-button').addEventListener('click', login);
+            document.getElementById('signup-button').addEventListener('click', signUp);
+
+            document.querySelectorAll('.nav-target').forEach((link) => {
+                link.addEventListener('click', app.nav);    
+            })
         })
         .catch(() => console.log('error response'));
     }

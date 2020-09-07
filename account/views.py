@@ -14,12 +14,14 @@ class LoginView(View):
     @method_decorator(csrf_protect)
     def get(self: object, request: object) -> object:
         logout(request)
-        print(request.user.is_authenticated)
         return render(request, template_name='index.html')
 
     @method_decorator(csrf_protect)
     def post(self: object, request: object) -> object:
         login_form = LoginForm(request.POST)
+        print('USER POST')
+        print(login_form.is_valid())
+        print(login_form.errors)
 
         if login_form.is_valid():
             return AuthenticationHandler.login_handler(request, login_form)
@@ -44,10 +46,3 @@ class SingupView(View):
 
         return JsonResponse(
             {'message': AuthenticationHandler.form_erors(signup_form)})
-
-    @method_decorator(csrf_protect)
-    def patch(self: object, request: object) -> object:
-        print('patch')
-        return render(
-            request, template_name='index.html',
-            context={'user': request.user})

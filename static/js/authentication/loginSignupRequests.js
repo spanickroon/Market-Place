@@ -16,7 +16,18 @@ function login(ev) {
     })
     .then(response => {
         if (response['message'] === 'ok') {
-            app.nav(ev);
+            currentPage = 'profile';
+
+            document.getElementById(currentPage).innerHTML = response['template'];
+
+            document.querySelector('.active-page').classList.remove('active-page');
+            document.getElementById(currentPage).classList.add('active-page');
+
+            document.querySelectorAll('.nav-target').forEach((link) => {
+                link.addEventListener('click', app.nav);    
+            })
+
+            history.pushState({}, currentPage, currentPage);
         }
         console.log(response['message']);
     })
@@ -39,9 +50,6 @@ function signUp(ev) {
         return response.json()
     })
     .then(response => {
-        if (response['message'] === 'ok') {
-            app.nav(ev);
-        }
         console.log(response['message']);
     })
     .catch(() => console.log('error response'));
@@ -52,5 +60,4 @@ function logout() {
     return false;
 }
 
-document.getElementById('login-button').addEventListener('click', login);
-document.getElementById('signup-button').addEventListener('click', signUp);
+

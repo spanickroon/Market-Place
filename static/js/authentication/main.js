@@ -26,18 +26,20 @@ function showHiddenRepeatPasswordOnSignUpPage(target) {
     return false;
 }
 
-var invalidPopup = document.getElementById('invalid-popup');
-var invalidPopupSignUp = document.getElementById('invalid-popup-signup');
+function setUpAuthentication() {
+    var invalidPopup = document.getElementById('invalid-popup');
+    var invalidPopupSignUp = document.getElementById('invalid-popup-signup');
 
-var passwordText = 'The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 8'
+    var passwordText = 'The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 8';
 
 
-setUpInvalidPopUp(invalidPopup, document.getElementById('input-login'));
-setUpInvalidPopUp(invalidPopup, document.getElementById('input-password-login'), passwordText);
+    setUpInvalidPopUp(invalidPopup, document.getElementById('input-login'));
+    setUpInvalidPopUp(invalidPopup, document.getElementById('input-password-login'), passwordText);
 
-setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-login-signup'));
-setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup'), passwordText);
-setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup-repeat'), passwordText, true, document.getElementById('input-password-signup'));
+    setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-login-signup'));
+    setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup'), passwordText);
+    setUpInvalidPopUp(invalidPopupSignUp, document.getElementById('input-password-signup-repeat'), passwordText, true, document.getElementById('input-password-signup'));
+}
 
 function setUpInvalidPopUp (target, element, text, passwordRepeat, passwordTeplate) {
     element.onblur = element.onmouseout = removeInvalidPopUp;
@@ -81,3 +83,5 @@ function setUpInvalidPopUp (target, element, text, passwordRepeat, passwordTepla
         target.style.left = element.offsetParent.offsetLeft + 'px';
     }
 }
+
+setUpAuthentication();

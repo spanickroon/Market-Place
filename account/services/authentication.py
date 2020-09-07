@@ -6,6 +6,8 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password, check_password
 from django.http import JsonResponse
+from django.shortcuts import render
+from django.template.loader import render_to_string
 
 from ..models import Profile
 
@@ -35,7 +37,12 @@ class AuthenticationHandler:
 
         login(request, user)
 
-        return JsonResponse({'message': 'ok'})
+        return JsonResponse(
+            {'message': 'ok',
+                'template': render_to_string(
+                    request=request,
+                    template_name='marketplace/profile.html',
+                    context={'user': request.user})})
 
     @staticmethod
     def signup_handler(request: object, signup_form: object) -> object:
