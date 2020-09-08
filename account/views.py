@@ -19,9 +19,6 @@ class LoginView(View):
     @method_decorator(csrf_protect)
     def post(self: object, request: object) -> object:
         login_form = LoginForm(request.POST)
-        print('USER POST')
-        print(login_form.is_valid())
-        print(login_form.errors)
 
         if login_form.is_valid():
             return AuthenticationHandler.login_handler(request, login_form)

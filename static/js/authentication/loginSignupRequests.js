@@ -28,6 +28,8 @@ function login(ev) {
             })
 
             history.pushState({}, currentPage, currentPage);
+        } else {
+            showModalPopUp(response['message']);
         }
         console.log(response['message']);
     })
@@ -50,14 +52,26 @@ function signUp(ev) {
         return response.json()
     })
     .then(response => {
+        if (response['message'] === 'ok') {
+            document.getElementById('input-login-signup').value = '';
+            document.getElementById('input-password-signup').value = '';
+            document.getElementById('input-password-signup-repeat').value = '';
+            
+            showModalPopUp('Successful registration. Go to the login tab.');
+        } else {
+            showModalPopUp(response['message']);
+        }
         console.log(response['message']);
     })
     .catch(() => console.log('error response'));
 } 
 
+function showModalPopUp(message) {
+    document.getElementById('modal-popup-text').textContent = message;
+    document.getElementById('modal-popup').classList.add('active-modal');
+}
+
 function logout() {
     console.log('logout');
     return false;
 }
-
-

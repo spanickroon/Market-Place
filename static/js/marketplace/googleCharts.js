@@ -1,8 +1,3 @@
-google.charts.load('current', {'packages':['corechart']});
-
-var res1 = randomValues20(3200);
-var res2 = randomValues20(3200);
-
 function getWindowSizes() {
     if (window.innerWidth >= 992) {
        return {width: 900, height: 400, fontTitle: 24, fontAxis: 22, fontValue: 16}
@@ -16,10 +11,13 @@ function getWindowSizes() {
 }
 
 function setUpCharts() {
+    var res1 = randomValues20(3200);
+    var res2 = randomValues20(3200);
+
     page = document.getElementById('stockgrowth-charts');
 
     var charts = [{title: 'Cannabis Stock Chart', chartID: 'cannabis_chart', values: res1}, {title: 'Cannabis Stock Chart2', chartID: 'cannabis_chart2', values: res2}];
-    var resultHtml = [];
+    let resultHtml = [];
 
     for (var chart in charts) {
         resultHtml.push(`<div id=${charts[chart].chartID} class="stockgrowth-container"></div>`);
@@ -37,8 +35,6 @@ function setUpCharts() {
     }
     myLoop();
 }
-
-setUpCharts();
 
 function setOnCallBack(charts) {
     google.charts.setOnLoadCallback(function() { 
@@ -136,3 +132,8 @@ function randomValues20(startNumber) {
 
     return res;
 }
+
+/* Test
+google.charts.load('current', {'packages':['corechart']});
+setUpCharts();
+*/

@@ -61,8 +61,13 @@ var app = {
             document.querySelectorAll('.nav-target').forEach((link) => {
                 link.addEventListener('click', app.nav);    
             })
+
+            /* Test
+            google.charts.load('current', {'packages':['corechart']});
+            setUpCharts();
+            */
         })
-        .catch(() => console.log('error response'));
+        .catch(() => console.log('error1 response'));
     }
 }
 
