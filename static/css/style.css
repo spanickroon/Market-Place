@@ -1442,7 +1442,7 @@ input:required {
     flex-direction: column;
 }
 
-.profile-info > label {
+.profile-info > p {
     font-size: 28px;
     font-weight: 400;
 
@@ -1460,7 +1460,7 @@ input:required {
     grid-column-end: 3;
 }
 
-.additional-profile-info > label {
+.additional-profile-info > p {
     font-size: 24px;
 }
 
