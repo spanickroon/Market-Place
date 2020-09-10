@@ -7,12 +7,12 @@
             <img src="{% static 'img/profile.svg' %}" alt="">
         </div>
         <div class="profile-info">
-            <label for="...">username</label>
-            <label for="...">14000$</label>
+            <p>{{ user.profile }}</p>
+            <p>{{ user.profile.balance }}$</p>
         </div>
         <div class="profile-info additional-profile-info">
-            <label for="...">Amount of deals: 0 </label>
-            <label for="...">Dividend income: 0$/min</label>
+            <p>Amount of deals: {{ user.profile.deals_amount }}</p>
+            <p>Dividend income: {{ user.profile.dividend_income }}$/min</p>
         </div>
         <button class="authentication-button nav-target" data-target="editprofile">Edit</button>
     </article>
@@ -22,19 +22,19 @@
         <div class="mystock">
             <img class="img-mystock" src="{% static 'img/cannabis-solid-black.svg'%}" alt="">
             <div class="mystock-block">
-                <label class="mystock-name" for="...">Cannabis</label>
-                <label class="mystock-count" for="...">Count: 12</label>
+                <p class="mystock-name">Cannabis</p>
+                <p class="mystock-count">Count: 12</p>
             </div>
             
             <div class="mystock-block">
-                <label class="mystock-price" for="...">3200$</label>
-                <label class="mystock-profitability" for="...">0.32$/min</label>
+                <p class="mystock-price">3200$</p>
+                <p class="mystock-profitability">0.32$/min</p>
             </div>
             <button class="mystock-button">Sell one</button>
             
             <div class="mystock-block">
-                <label class="mystock-price" for="...">38400$</label>
-                <label class="mystock-profitability" for="...">3.84$/min</label>
+                <p class="mystock-price">38400$</p>
+                <p class="mystock-profitability">3.84$/min</p>
             </div>
             <button class="mystock-button">Sell all</button>
         </div>
