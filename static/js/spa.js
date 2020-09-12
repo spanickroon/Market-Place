@@ -57,6 +57,7 @@ var app = {
             
             document.getElementById('login-button').addEventListener('click', login);
             document.getElementById('signup-button').addEventListener('click', signUp);
+            document.getElementById('change-password-button').addEventListener('click', changePassword);
 
             document.querySelectorAll('.nav-target').forEach((link) => {
                 link.addEventListener('click', app.nav);    

@@ -20,3 +20,13 @@ class SignupForm(UserCreationForm):
 
         model = User
         fields = ('username', 'password1', 'password2')
+
+
+class ChangePasswordForm(UserCreationForm):
+    """PasswordChangeForm class with meta data for password change."""
+
+    class Meta:
+        """Meta data."""
+
+        model = User
+        fields = ('password1', 'password2')

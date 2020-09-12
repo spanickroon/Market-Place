@@ -60,3 +60,19 @@ class AuthenticationHandler:
         profile.save()
 
         return JsonResponse({'message': 'ok'})
+
+    @staticmethod
+    def change_password_handler(
+            request: object, change_password_form: object) -> object:
+
+        user = User.objects.get(username=request.user.username)
+
+        password1 = change_password_form.cleaned_data.get('password1')
+        password2 = change_password_form.cleaned_data.get('password2')
+
+        user.password = make_password(password2)
+        user.save()
+
+        login(request, user)
+
+        return JsonResponse({'message': 'ok'})

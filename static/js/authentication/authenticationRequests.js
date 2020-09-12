@@ -66,6 +66,36 @@ function signUp(ev) {
     .catch(() => console.log('error response'));
 } 
 
+function changePassword(ev) {
+    ev.preventDefault();
+
+    fetch('password', 
+    {
+        method: 'POST',
+        body: 'password1=' + document.getElementById('change-password-input').value + '&password2=' + document.getElementById('change-password-input-repeat').value,
+        headers: {'content-type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCookie('csrftoken') },
+    })
+    .then(response => {
+        if (response.status !== 200) {
+            return Promise.reject(); 
+        }
+        return response.json()
+    })
+    .then(response => {
+        if (response['message'] === 'ok') {
+
+            document.getElementById('change-password-input').value = '';
+            document.getElementById('change-password-input-repeat').value = '';
+
+            showModalPopUp('Password change was successful');
+        } else {
+            showModalPopUp(response['message']);
+        }
+        console.log(response['message']);
+    })
+    .catch(() => console.log('error response'));
+} 
+
 function showModalPopUp(message) {
     document.getElementById('modal-popup-text').textContent = message;
     document.getElementById('modal-popup').classList.add('active-modal');
