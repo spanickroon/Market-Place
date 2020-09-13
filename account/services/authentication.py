@@ -76,3 +76,30 @@ class AuthenticationHandler:
         login(request, user)
 
         return JsonResponse({'message': 'ok'})
+
+    @staticmethod
+    def edit_pofile_handler(
+            request: object, edit_profile_info: object) -> object:
+        """Change user data in profile."""
+        new_username = edit_profile_info.cleaned_data.get('username')
+
+        if User.objects.filter(username=new_username).exists() \
+                and new_username != request.user.username:
+            return JsonResponse(
+                {'message': 'A user with this username already exists'})
+
+        user = User.objects.get(username=request.user.username)
+
+        user.username = new_username
+
+        user.profile.save()
+        user.save()
+
+        login(request, user)
+
+        return JsonResponse(
+            {'message': 'ok',
+                'template': render_to_string(
+                    request=request,
+                    template_name='marketplace/profile.html',
+                    context={'user': request.user})})

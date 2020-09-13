@@ -54,10 +54,11 @@ var app = {
             
             setUpAuthentication();
             setUpMarketplace();
-            
+
             document.getElementById('login-button').addEventListener('click', login);
             document.getElementById('signup-button').addEventListener('click', signUp);
             document.getElementById('change-password-button').addEventListener('click', changePassword);
+            document.getElementById('edit-profile-info-button').addEventListener('click', editProfileInfo);
 
             document.querySelectorAll('.nav-target').forEach((link) => {
                 link.addEventListener('click', app.nav);    
