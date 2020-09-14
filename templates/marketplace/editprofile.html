@@ -3,7 +3,7 @@
 {% block content %}
 <div class="editprofile-container">
     <div class="img-profile" id="new-img-profile">
-        <img src="{% static 'img/profile.svg' %}" alt="">
+        <img src="{{ user.profile.avatar.url }}" alt="">
     </div>
     <form id="edit-profile-info-form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}

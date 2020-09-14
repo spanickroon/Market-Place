@@ -4,7 +4,7 @@
 <div class="content-container-profile">
     <article class="profile-article">
         <div class="img-profile">
-            <img src="{% static 'img/profile.svg' %}" alt="">
+            <img src="{{ user.profile.avatar.url }}" alt="">
         </div>
         <div class="profile-info">
             <p>{{ user.profile }}</p>

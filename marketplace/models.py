@@ -7,9 +7,9 @@ class Stock(models.Model):
         null=True, verbose_name='Name')
 
     avatar = models.ImageField(
-        default='profile.svg',
+        default='img/stocks/stock.png',
         verbose_name='Avatar',
-        upload_to='profiles/', null=True, blank=True)
+        upload_to='img/stocks', null=True, blank=True)
 
     cost = models.IntegerField(
         default=0, blank=True,

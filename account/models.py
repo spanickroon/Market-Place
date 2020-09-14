@@ -8,9 +8,9 @@ class Profile(models.Model):
         verbose_name='User')
 
     avatar = models.ImageField(
-        default='profile.svg',
+        default='img/profiles/profile.png',
         verbose_name='Avatar',
-        upload_to='profiles/', null=True, blank=True)
+        upload_to='img/profiles', null=True, blank=True)
 
     balance = models.IntegerField(
         default=10000, blank=True,
