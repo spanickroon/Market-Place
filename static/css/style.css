@@ -2249,38 +2249,6 @@ input:required {
     background-color: rgba(35, 35, 35, 0.9);
 }
 
-#drop-area {
-    display: flex;
-   
-    justify-content: center;
-    align-items: center;
-
-    margin-top: 10px;
-
-    height: 50px;
-    width: 250px;
-
-    font-size: 18px;
-    font-weight: 400;
-
-    color: #FFFFFF;
-
-    border-radius: 20px;
-    border: 2px dashed #FFFFFF;
-
-    transition-duration: .2s;
-}
-
-#drop-area:hover {
-    color: #C4C4C4;
-
-    border: 2px dashed #C4C4C4;
-}
-
-#fileElem {
-    display: none;
-}
-
 .editprofile-div {
     margin-top: 25px;
     width: 250px;

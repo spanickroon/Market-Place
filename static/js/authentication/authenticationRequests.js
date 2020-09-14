@@ -87,8 +87,7 @@ function changePassword(ev) {
 
 function editProfileInfo(ev) {
     ev.preventDefault();
-
-    console.log(document.getElementById('input-new-login').value)
+    
     fetch('editprofile', 
     {
         method: 'POST',

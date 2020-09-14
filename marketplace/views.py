@@ -22,8 +22,6 @@ class ProfileView(View):
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
-        print(request.user.is_authenticated)
-        print(request.user.profile)
         return render(
             request, template_name='index.html',
             context={'user': request.user})
@@ -76,9 +74,8 @@ class EditProfileView(View):
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def post(self: object, request: object) -> object:
-        edit_profile_info = EditProfileInfo(request.POST)
 
-        print(edit_profile_info.is_valid())
+        edit_profile_info = EditProfileInfo(request.POST)
 
         if edit_profile_info.is_valid():
             return AuthenticationHandler.edit_pofile_handler(

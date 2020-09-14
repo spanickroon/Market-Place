@@ -5,12 +5,9 @@
     <div class="img-profile" id="new-img-profile">
         <img src="{% static 'img/profile.svg' %}" alt="">
     </div>
-    <form id="edit-profile-info-form" method="POST">
+    <form id="edit-profile-info-form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-         <!--
-        <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
-        <label id="drop-area" for="fileElem" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);">Choese image or drag</label>
-        -->
+
         <div class="authentication-div editprofile-div">
             <input id="input-new-login" class="authentication-input editprofile-input" type="text" placeholder=" " value="{{ user.profile }}" maxlength="17" minlength="5" title=" " required>
             <svg class="img-form" width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
