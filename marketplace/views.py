@@ -7,6 +7,7 @@ from django.utils.decorators import method_decorator
 
 from account.forms import ChangePasswordForm, EditProfileInfo
 from account.services.authentication import AuthenticationHandler
+from .services.marketplace import MarketPlaceHandler
 
 
 class StocksView(View):
@@ -14,7 +15,9 @@ class StocksView(View):
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
-        return render(request, template_name='index.html')
+        return render(
+            request, template_name='index.html',
+            context={'stocks': MarketPlaceHandler.get_stocks()})
 
 
 class ProfileView(View):

@@ -2280,17 +2280,6 @@ input:required {
         border-radius: 15px;
     }
     
-    #drop-area {    
-        margin-top: 10px;
-    
-        height: 30px;
-        width: 140px;
-    
-        font-size: 10px;
-    
-        border-radius: 15px;
-    }
-    
     .editprofile-div {
         margin-top: 25px;
         width: 140px;
@@ -2305,17 +2294,6 @@ input:required {
     
         width: 150px;
         height: 150px;
-    
-        border-radius: 10px;
-    }
-    
-    #drop-area {    
-        margin-top: 7px;
-    
-        height: 20px;
-        width: 100px;
-    
-        font-size: 7px;
     
         border-radius: 10px;
     }
@@ -2336,17 +2314,6 @@ input:required {
     
         width: 250px;
         height: 350px;
-    
-        border-radius: 15px;
-    }
-    
-    #drop-area {    
-        margin-top: 20px;
-    
-        height: 40px;
-        width: 180px;
-    
-        font-size: 16px;
     
         border-radius: 15px;
     }
