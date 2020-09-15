@@ -37,7 +37,10 @@ var app = {
         ev.preventDefault();
 
         let currentPage = document.querySelector('.active-page').getAttribute('id');
-        document.querySelector('.active-page').innerHTML = document.getElementById('pageloader').innerHTML;
+        
+        if (currentPage !== 'login' && currentPage !== 'signup') {
+            document.querySelector('.active-page').innerHTML = document.getElementById('pageloader').innerHTML;
+        }
         
         fetch(currentPage, {
             method: 'GET',
