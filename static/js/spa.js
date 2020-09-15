@@ -37,11 +37,8 @@ var app = {
         ev.preventDefault();
 
         let currentPage = document.querySelector('.active-page').getAttribute('id');
-        
-        if (currentPage !== 'login' && currentPage !== 'signup') {
-            document.querySelector('.active-page').innerHTML = document.getElementById('pageloader').innerHTML;
-        }
-        
+        transitionLoader(currentPage);
+
         fetch(currentPage, {
             method: 'GET',
             headers: {'content-type': 'application/x-www-form-urlencoded'},
@@ -63,7 +60,19 @@ var app = {
     }
 }
 
-/*------Received Page Handler------*/
+/*------Page transition loader------*/
+function transitionLoader(currentPage) {
+    if (currentPage !== 'login' && currentPage !== 'signup') {
+        document.querySelector('.active-page').innerHTML = document.getElementById('pageloader').innerHTML;
+        
+        document.querySelectorAll('.nav-target').forEach(element => {
+            element.classList.remove('nav-target');
+            element.classList.add('nav-link-not-active');
+        });
+    }
+}
+
+/*------Received page handler------*/
 function receivedPageHandler(currentPage) {
     setUpAuthentication();
     setUpMarketplace();

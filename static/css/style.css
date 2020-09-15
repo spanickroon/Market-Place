@@ -799,6 +799,11 @@ input:required {
     transition-duration: .1s;
 }
 
+.nav-link-not-active {
+    pointer-events: none;
+    cursor: default;
+}
+
 .nav-links > a > svg {
     justify-self: flex-end;
 }
