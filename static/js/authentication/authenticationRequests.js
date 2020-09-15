@@ -16,7 +16,7 @@ function login(ev) {
     })
     .then(response => {
         if (response['message'] === 'ok') {
-            showProfilePage(response);
+            showCurrentPage(response, 'profile');
         } else {
             showModalPopUp(response['message']);
         }
@@ -103,7 +103,7 @@ function editProfileInfo(ev) {
     .then(response => {
         if (response['message'] === 'ok') {
             showModalPopUp('Profile info change was successful');
-            showProfilePage(response);
+            showCurrentPage(response, 'profile');
         } else {
             showModalPopUp(response['message']);
         }
@@ -112,9 +112,7 @@ function editProfileInfo(ev) {
     .catch(() => console.log('error response'));
 } 
 
-function showProfilePage(response) {
-    currentPage = 'profile';
-
+function showCurrentPage(response, currentPage) {
     document.getElementById(currentPage).innerHTML = response['template'];
 
     document.querySelector('.active-page').classList.remove('active-page');

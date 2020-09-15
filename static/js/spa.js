@@ -23,6 +23,7 @@ var app = {
         document.getElementById(currentPage).classList.add('active-page');
         
         history.pushState({}, currentPage, currentPage);
+
         document.getElementById(currentPage).dispatchEvent(app.show);
     },
     poppin: function(ev) {
@@ -36,6 +37,7 @@ var app = {
         ev.preventDefault();
 
         let currentPage = document.querySelector('.active-page').getAttribute('id');
+        document.querySelector('.active-page').innerHTML = document.getElementById('pageloader').innerHTML;
         
         fetch(currentPage, {
             method: 'GET',
@@ -52,25 +54,34 @@ var app = {
             doc = parser.parseFromString(response, 'text/html');
             document.querySelector('.active-page').innerHTML = doc.getElementById(currentPage).innerHTML;
             
-            setUpAuthentication();
-            setUpMarketplace();
-
-            document.getElementById('login-button').addEventListener('click', login);
-            document.getElementById('signup-button').addEventListener('click', signUp);
-            document.getElementById('change-password-button').addEventListener('click', changePassword);
-            document.getElementById('edit-profile-info-button').addEventListener('click', editProfileInfo);
-
-            document.querySelectorAll('.nav-target').forEach((link) => {
-                link.addEventListener('click', app.nav);    
-            })
-
-            /* Test
-            google.charts.load('current', {'packages':['corechart']});
-            setUpCharts();
-            */
+            receivedPageHandler(currentPage);
         })
-        .catch(() => console.log('error1 response'));
+        .catch(() => console.log('error spa response'));
     }
+}
+
+/*------Received Page Handler------*/
+function receivedPageHandler(currentPage) {
+    setUpAuthentication();
+    setUpMarketplace();
+
+    document.getElementById('login-button').addEventListener('click', login);
+    document.getElementById('signup-button').addEventListener('click', signUp);
+    document.getElementById('change-password-button').addEventListener('click', changePassword);
+    document.getElementById('edit-profile-info-button').addEventListener('click', editProfileInfo);
+
+    if (currentPage === 'stocks') {
+        document.getElementsByClassName('paggination-button')[0].classList.add('active-paggination-button');
+    }
+
+    document.querySelectorAll('.nav-target').forEach((link) => {
+        link.addEventListener('click', app.nav);    
+    })
+
+    /* Test
+    google.charts.load('current', {'packages':['corechart']});
+    setUpCharts();
+    */
 }
 
 /*---------First page load---------*/

@@ -5,7 +5,7 @@
     {% for stock in stocks %}
         <article class="stock-article">
             <div class="stock-article-container">
-                <img class="img-stock" src="{% static 'img/cannabis-solid.png'%}" alt="">
+                <img class="img-stock" src="{{ stock.avatar.url }}" alt="">
                 <label class="stock-name" for="...">{{ stock.name }}</label>
                 <label class="stock-price" for="...">{{ stock.cost }}$</label>
                 <label class="stock-profitability" for="...">{{ stock.dividend_income }}$/min</label>
@@ -15,9 +15,9 @@
     {% endfor %}
 </div>
 <span class="paggination-bar">
-    <button class="paggination-button active-paggination-button">1</button>
-    {% for item in 2345|make_list %}
-    <button class="paggination-button">{{item}}</button>
+    <!--<button class="paggination-button active-paggination-button">1</button>-->
+    {% for item in stocks_pages %}
+    <button class="paggination-button" onclick="getStocksOnCurrentPage(this)">{{item}}</button>
     {% endfor %}
 </span>
 {% endblock%}

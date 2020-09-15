@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
+from django.template.loader import render_to_string
 
 from account.forms import ChangePasswordForm, EditProfileInfo
 from account.services.authentication import AuthenticationHandler
@@ -17,7 +18,20 @@ class StocksView(View):
     def get(self: object, request: object) -> object:
         return render(
             request, template_name='index.html',
-            context={'stocks': MarketPlaceHandler.get_stocks()})
+            context={
+                'stocks': MarketPlaceHandler.get_stocks(1),
+                'stocks_pages': MarketPlaceHandler.get_stocks_pages()})
+
+    @method_decorator(csrf_protect)
+    @method_decorator(login_required(login_url='login'))
+    def post(self: object, request: object) -> object:
+        page = request.POST['active_page']
+        return JsonResponse(
+            {'message': 'ok', 'template': render_to_string(
+                request=request, template_name='marketplace/stocks.html',
+                context={
+                    'stocks': MarketPlaceHandler.get_stocks(page),
+                    'stocks_pages': MarketPlaceHandler.get_stocks_pages()})})
 
 
 class ProfileView(View):
