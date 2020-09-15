@@ -81,6 +81,7 @@ function receivedPageHandler(currentPage) {
     document.getElementById('signup-button').addEventListener('click', signUp);
     document.getElementById('change-password-button').addEventListener('click', changePassword);
     document.getElementById('edit-profile-info-button').addEventListener('click', editProfileInfo);
+    document.addEventListener('mouseup', hideModalPopUp);
 
     if (currentPage === 'stocks') {
         document.getElementsByClassName('paggination-button')[0].classList.add('active-paggination-button');
