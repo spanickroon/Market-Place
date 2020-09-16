@@ -25,13 +25,10 @@ class StocksView(View):
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def post(self: object, request: object) -> object:
-        page = request.POST['active_page']
-        return JsonResponse(
-            {'message': 'ok', 'template': render_to_string(
-                request=request, template_name='marketplace/stocks.html',
-                context={
-                    'stocks': MarketPlaceHandler.get_stocks(page),
-                    'stocks_pages': MarketPlaceHandler.get_stocks_pages()})})
+        if request.POST['message'] == 'buy':
+            return MarketPlaceHandler.post_buy_stock(request)
+        else:
+            return MarketPlaceHandler.post_display_stocks(request)
 
 
 class ProfileView(View):

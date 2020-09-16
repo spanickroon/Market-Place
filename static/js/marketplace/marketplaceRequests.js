@@ -6,7 +6,7 @@ function getStocksOnCurrentPage(button) {
     fetch('stocks', 
     {
         method: 'POST',
-        body: 'active_page=' + button.textContent,
+        body: 'message=' + 'display' + '&active_page=' + button.textContent,
         mode: 'same-origin',
         headers: {'content-type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCookie('csrftoken') },
     })

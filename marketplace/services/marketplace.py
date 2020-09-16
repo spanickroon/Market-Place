@@ -33,3 +33,16 @@ class MarketPlaceHandler:
     @staticmethod
     def buy_stock(user: object) -> object:
         pass
+
+    @staticmethod
+    def post_buy_stock(request):
+        pass
+
+    @staticmethod
+    def post_display_stocks(request):
+        page = request.POST['active_page']
+        return JsonResponse({'message': 'ok', 'template': render_to_string(
+                request=request, template_name='marketplace/stocks.html',
+                context={
+                    'stocks': MarketPlaceHandler.get_stocks(page),
+                    'stocks_pages': MarketPlaceHandler.get_stocks_pages()})})
