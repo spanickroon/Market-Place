@@ -52,13 +52,19 @@ class MarketPlaceHandler:
         else:
             return 'Insufficient funds'
 
+        profile.dividend_income = sum([
+            mystock.stock.dividend_income * mystock.count
+            for mystock in MyStock.objects.filter(user=request.user)])
+
+        profile.save()
+
         return 'ok'
 
     @staticmethod
     def post_buy_stock(request: object) -> object:
         return JsonResponse({
             'message': MarketPlaceHandler.buy_stock(request),
-            'profile': f'{request.user}, {request.user.profile.balance:.2}$',
+            'profile': f'{request.user}, {request.user.profile.balance:.2f}$',
             'template': render_to_string(
                 request=request, template_name='marketplace/stocks.html')})
 
