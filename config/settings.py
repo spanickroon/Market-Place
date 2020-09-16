@@ -61,6 +61,9 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
             ],
+            'builtins': [
+                'templatetags.marketplacetags',
+            ]
         },
     },
 ]

@@ -41,7 +41,9 @@ class ProfileView(View):
     def get(self: object, request: object) -> object:
         return render(
             request, template_name='index.html',
-            context={'user': request.user})
+            context={
+                'user': request.user,
+                'mystocks': MarketPlaceHandler.get_my_stocks(request.user)})
 
 
 class NotificationsView(View):

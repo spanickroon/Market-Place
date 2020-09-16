@@ -1,5 +1,6 @@
 {% extends 'marketplace/base.html'%}
-{% load static%}
+{% load static %}
+
 {% block content %}
 <div class="content-container-profile">
     <article class="profile-article">
@@ -18,23 +19,23 @@
     </article>
     
     <article class="mystocks-article">
-        {% for item in 12345678|make_list %}
+        {% for mystock in mystocks %}
         <div class="mystock">
-            <img class="img-mystock" src="{% static 'img/cannabis-solid-black.svg'%}" alt="">
+            <img class="img-mystock" src="{{ mystock.stock.avatar.url }}" alt="">
             <div class="mystock-block">
-                <p class="mystock-name">Cannabis</p>
-                <p class="mystock-count">Count: 12</p>
+                <p class="mystock-name">{{ mystock.stock.name }}</p>
+                <p class="mystock-count">Count: {{ mystock.count }}</p>
             </div>
             
             <div class="mystock-block">
-                <p class="mystock-price">3200$</p>
-                <p class="mystock-profitability">0.32$/min</p>
+                <p class="mystock-price">{{ mystock.stock.cost }}$</p>
+                <p class="mystock-profitability">{{ mystock.stock.dividend_income }}$/min</p>
             </div>
             <button class="mystock-button">Sell one</button>
             
-            <div class="mystock-block">
-                <p class="mystock-price">38400$</p>
-                <p class="mystock-profitability">3.84$/min</p>
+            <div class="mystock-block"> 
+                <p class="mystock-price">{% multiplying_values mystock.stock.cost mystock.count %}$</p>
+                <p class="mystock-profitability">{% multiplying_values mystock.stock.dividend_income mystock.count%}$/min</p>
             </div>
             <button class="mystock-button">Sell all</button>
         </div>
