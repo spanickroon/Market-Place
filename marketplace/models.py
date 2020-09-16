@@ -1,4 +1,5 @@
 from django.db import models
+from account.models import User
 
 
 class Stock(models.Model):
@@ -28,3 +29,30 @@ class Stock(models.Model):
     def __str__(self) -> str:
         """Funtion for output info about this profile object."""
         return self.name
+
+
+class MyStock(models.Model):
+    """MyStock class with function output and meta data."""
+
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        verbose_name='User')
+
+    stock = models.ForeignKey(
+        Stock, on_delete=models.CASCADE, blank=True, null=True,
+        verbose_name='ID Stock')
+
+    count = models.IntegerField(
+        default=1, blank=True,
+        null=False, verbose_name='Count')
+
+    class Meta:
+        """Meta data."""
+
+        db_table = 'MyStock'
+        verbose_name = 'MyStock'
+        verbose_name_plural = 'MyStocks'
+
+    def __str__(self):
+        """Funtion for output info about this mystock object."""
+        return f'{self.user.username} - {self.stock.name} - {self.count}'
