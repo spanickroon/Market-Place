@@ -9,13 +9,12 @@
                 <label class="stock-name" for="...">{{ stock.name }}</label>
                 <label class="stock-price" for="...">{{ stock.cost }}$</label>
                 <label class="stock-profitability" for="...">{{ stock.dividend_income }}$/min</label>
-                <button class="stock-button">Buy</button>
+                <button class="stock-button" id="buystock-{{ stock.id }}" onclick="buyStock(this);">Buy</button>
             </div>
         </article>
     {% endfor %}
 </div>
 <span class="paggination-bar">
-    <!--<button class="paggination-button active-paggination-button">1</button>-->
     {% for item in stocks_pages %}
     <button class="paggination-button" onclick="getStocksOnCurrentPage(this)">{{item}}</button>
     {% endfor %}
