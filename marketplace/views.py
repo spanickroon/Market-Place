@@ -42,6 +42,11 @@ class ProfileView(View):
                 'user': request.user,
                 'mystocks': MarketPlaceHandler.get_my_stocks(request.user)})
 
+    @method_decorator(csrf_protect)
+    @method_decorator(login_required(login_url='login'))
+    def post(self: object, request: object) -> object:
+        return MarketPlaceHandler.post_sell_stock(request)
+
 
 class NotificationsView(View):
 

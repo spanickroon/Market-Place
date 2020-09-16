@@ -52,3 +52,26 @@ function buyStock(button) {
     })
     .catch(() => console.log('error response'));
 }
+
+function sellStock(button) {
+    fetch('profile', 
+    {
+        method: 'POST',
+        body: 'message=' + 'sell' + '&stock_id=' + button.id,
+        mode: 'same-origin',
+        headers: {'content-type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCookie('csrftoken') },
+    })
+    .then(response => {
+        if (response.status !== 200) {
+            return Promise.reject(); 
+        }
+        return response.json();
+    })
+    .then(response => {
+        if (response['message'] === 'ok') {
+            showModalPopUp('Successful sale');
+            showCurrentPage(response, 'profile')
+        } 
+    })
+    .catch(() => console.log('error response'));
+}

@@ -55,18 +55,52 @@ class MarketPlaceHandler:
         return 'ok'
 
     @staticmethod
-    def post_buy_stock(request):
+    def post_buy_stock(request: object) -> object:
         return JsonResponse({
             'message': MarketPlaceHandler.buy_stock(request),
-            'profile': f'{request.user}, {request.user.profile.balance}$',
+            'profile': f'{request.user}, {request.user.profile.balance:.2}$',
             'template': render_to_string(
                 request=request, template_name='marketplace/stocks.html')})
 
     @staticmethod
-    def post_display_stocks(request):
+    def post_display_stocks(request: object) -> object:
         page = request.POST['active_page']
         return JsonResponse({'message': 'ok', 'template': render_to_string(
                 request=request, template_name='marketplace/stocks.html',
                 context={
                     'stocks': MarketPlaceHandler.get_stocks(page),
                     'stocks_pages': MarketPlaceHandler.get_stocks_pages()})})
+
+    @staticmethod
+    def sell_stock(request: object) -> str:
+        profile = Profile.objects.get(user=request.user)
+        act, stock_id = request.POST['stock_id'].split('-')
+        mystock = MyStock.objects.get(stock=stock_id)
+
+        if act == 'sellall':
+            profile.balance += (mystock.stock.cost * mystock.count)
+            mystock.delete()
+        else:
+            profile.balance += mystock.stock.cost
+            mystock.count -= 1
+            mystock.save()
+
+            if mystock.count == 0:
+                mystock.delete()
+
+        profile.dividend_income = sum([
+            mystock.stock.dividend_income * mystock.count
+            for mystock in MyStock.objects.filter(user=request.user)])
+
+        profile.save()
+
+        return 'ok'
+
+    @staticmethod
+    def post_sell_stock(request: object) -> object:
+        return JsonResponse({
+            'message': MarketPlaceHandler.sell_stock(request),
+            'template': render_to_string(
+                request=request, template_name='marketplace/profile.html',
+                context={'user': request.user, 'mystocks':
+                            MarketPlaceHandler.get_my_stocks(request.user)})})

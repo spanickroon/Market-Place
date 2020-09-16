@@ -9,11 +9,11 @@
         </div>
         <div class="profile-info">
             <p>{{ user.profile }}</p>
-            <p>{{ user.profile.balance }}$</p>
+            <p>{{ user.profile.balance|floatformat:2 }}$</p>
         </div>
         <div class="profile-info additional-profile-info">
             <p>Amount of deals: {{ user.profile.deals_amount }}</p>
-            <p>Dividend income: {{ user.profile.dividend_income }}$/min</p>
+            <p>Dividend income: {{ user.profile.dividend_income|floatformat:4 }}$/min</p>
         </div>
         <button class="authentication-button nav-target" data-target="editprofile">Edit</button>
     </article>
@@ -29,15 +29,15 @@
             
             <div class="mystock-block">
                 <p class="mystock-price">{{ mystock.stock.cost }}$</p>
-                <p class="mystock-profitability">{{ mystock.stock.dividend_income }}$/min</p>
+                <p class="mystock-profitability">{{ mystock.stock.dividend_income|floatformat:4 }}$/min</p>
             </div>
-            <button class="mystock-button">Sell one</button>
+            <button class="mystock-button" id="sellone-{{ mystock.stock.id }}" onclick="sellStock(this);">Sell one</button>
             
             <div class="mystock-block"> 
                 <p class="mystock-price">{% multiplying_values mystock.stock.cost mystock.count %}$</p>
-                <p class="mystock-profitability">{% multiplying_values mystock.stock.dividend_income mystock.count%}$/min</p>
+                <p class="mystock-profitability">{% multiplying_values mystock.stock.dividend_income mystock.count %}$/min</p>
             </div>
-            <button class="mystock-button">Sell all</button>
+            <button class="mystock-button" id="sellall-{{ mystock.stock.id }}" onclick="sellStock(this);">Sell all</button>
         </div>
         {% endfor %}
     </article>
