@@ -67,7 +67,7 @@ class Notification(models.Model):
         auto_now_add=True,
         blank=True, null=True, verbose_name='Time')
 
-    cost = models.IntegerField(
+    cost = models.FloatField(
         default=0, blank=True,
         null=True, verbose_name='Cost')
 

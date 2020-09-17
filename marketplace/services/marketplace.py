@@ -133,4 +133,5 @@ class MarketPlaceHandler:
 
     @staticmethod
     def get_notifications(request: object) -> object:
-        return Notification.objects.filter(user=request.user).order_by('-datetime')
+        return Notification.objects.filter(
+            user=request.user).order_by('-datetime')

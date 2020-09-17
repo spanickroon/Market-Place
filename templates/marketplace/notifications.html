@@ -14,7 +14,7 @@
         <p class="notification-number">{{ forloop.revcounter }}</p>
         <p>{{ notification.datetime.day }}.{{ notification.datetime.month }}.{{ notification.datetime.year }}</p>
         <p>{{ notification.datetime.hour }}:{{ notification.datetime.minute }}:{{ notification.datetime.second }}</p>
-        <p>{{ notification.cost }}$</p>
+        <p>{{ notification.cost|floatformat:2 }}$</p>
         <p>{{ notification.message }}</p>
     </div>
     {% endfor %}
