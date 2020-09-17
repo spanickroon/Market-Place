@@ -88,6 +88,11 @@ class StockGrowthView(View):
     def get(self: object, request: object) -> object:
         return render(request, template_name='index.html')
 
+    @method_decorator(csrf_protect)
+    @method_decorator(login_required(login_url='login'))
+    def post(self: object, request: object) -> object:
+        return MarketPlaceHandler.post_request_stocks(request)
+
 
 class EditProfileView(View):
 

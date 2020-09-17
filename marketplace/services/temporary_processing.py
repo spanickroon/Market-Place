@@ -1,5 +1,6 @@
 from threading import Thread
 import time
+import datetime
 
 from marketplace.models import Stock, Notification
 from account.models import Profile
@@ -19,13 +20,27 @@ class Procesing:
     @postpone
     def all_proccesing():
         while True:
-            time.sleep(3)
+            time.sleep(10)
             Procesing.accrural_of_income()
+            Procesing.change_stock_prices()
+
+    @staticmethod
+    def change_stock_prices():
+        minute = datetime.datetime.now().minute
+        second = datetime.datetime.now().second
+
+        for stock in Stock.objects.all():
+            list_stoks = stock.string_to_json()
+            if len(list_stoks) > 19:
+                del list_stoks[0]
+            list_stoks.append([f'{minute:02d}:{second:02d}', stock.cost])
+            stock.json_to_string(list_stoks)
+            stock.save()
 
     @staticmethod
     def accrural_of_income():
-        print(time.time())
-
+        pass
+        """
         for profile in Profile.objects.all():
             if profile.dividend_income != 0:
                 notification = Notification(
@@ -36,3 +51,4 @@ class Procesing:
                 profile.balance += profile.dividend_income
                 profile.save()
                 notification.save()
+        """

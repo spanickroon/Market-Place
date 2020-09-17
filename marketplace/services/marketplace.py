@@ -135,3 +135,16 @@ class MarketPlaceHandler:
     def get_notifications(request: object) -> object:
         return Notification.objects.filter(
             user=request.user).order_by('-datetime')
+
+    @staticmethod
+    def get_values_stocks(request: object) -> list:
+        res = []
+        for stock in Stock.objects.all():
+            res.append({'name': stock.name, 'values': stock.string_to_json()})
+        return res
+
+    @staticmethod
+    def post_request_stocks(request: object) -> object:
+        return JsonResponse({
+            'message': 'ok',
+            'content': MarketPlaceHandler.get_values_stocks(request)})

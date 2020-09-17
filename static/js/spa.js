@@ -90,15 +90,12 @@ function receivedPageHandler(currentPage) {
     document.querySelectorAll('.nav-target').forEach((link) => {
         link.addEventListener('click', app.nav);    
     })
-
-    /* Test
-    google.charts.load('current', {'packages':['corechart']});
-    setUpCharts();
-    */
 }
 
 /*---------First page load---------*/
 window.onload=function() {
+    google.charts.load('current', {'packages':['corechart']});
+
     let startPage = window.location.pathname;
     let currentPage = startPage.slice(1, startPage.length);
 
@@ -109,6 +106,18 @@ window.onload=function() {
 
     document.getElementById(currentPage).classList.add('active-page');
     document.getElementById(currentPage).dispatchEvent(app.show);
+
+    function myLoop() {        
+        setTimeout(function() {  
+            try {
+                setUpCharts();
+            }
+            catch (e) {
+            }
+            myLoop();                  
+        }, 1000);
+    }
+    myLoop();
 }
 
 /*---------------DOM---------------*/

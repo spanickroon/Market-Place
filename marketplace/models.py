@@ -1,5 +1,8 @@
+import json
+
 from django.db import models
 from account.models import User
+from django.contrib.postgres.fields import ArrayField
 
 
 class Stock(models.Model):
@@ -19,6 +22,16 @@ class Stock(models.Model):
     dividend_income = models.FloatField(
         default=0, blank=True,
         null=True, verbose_name='Dividend income')
+
+    list_costs = models.TextField(
+        default='[]',
+        blank=False, null=True, verbose_name='List costs')
+
+    def json_to_string(self, json_value):
+        self.list_costs = json.dumps(json_value)
+
+    def string_to_json(self):
+        return json.loads(self.list_costs)
 
     class Meta:
         """Meta data."""
