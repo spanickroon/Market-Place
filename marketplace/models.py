@@ -63,10 +63,8 @@ class Notification(models.Model):
         User, on_delete=models.CASCADE,
         verbose_name='User')
 
-    date = models.DateField(
-        blank=True, null=True, verbose_name='Date')
-
-    time = models.DateTimeField(
+    datetime = models.DateTimeField(
+        auto_now_add=True,
         blank=True, null=True, verbose_name='Time')
 
     cost = models.IntegerField(

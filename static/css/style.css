@@ -1911,7 +1911,7 @@ input:required {
     background-color: rgba(35, 35, 35, 0.9);
 }
 
-.notification-info-panel > label {
+.notification-info-panel > p {
     color: #FFFFFF;
     text-align: center;
 
@@ -1921,8 +1921,10 @@ input:required {
 
 .list-notifications-container {
     display: grid;
+
     flex-direction: column;
     justify-content: center;
+    grid-template-rows: repeat(99, 60px);
 
     margin-top: 10px;
     margin-left: 100px;
@@ -1955,12 +1957,9 @@ input:required {
     background-color: #FFFFFF;
 }
 
-.notification > label, p {
+.notification > p {
     font-size: 24px;
     font-weight: 400;
-}
-
-.notification > label {
     text-align: center;
 }
 

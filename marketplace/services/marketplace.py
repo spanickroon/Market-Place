@@ -11,7 +11,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.template.loader import render_to_string
-from ..models import Stock, MyStock
+from ..models import Stock, MyStock, Notification
 from account.models import Profile
 
 from django.core.paginator import Paginator
@@ -50,6 +50,10 @@ class MarketPlaceHandler:
             mystock.save()
             profile.save()
         else:
+            notification = Notification(
+                user=user, cost=stock.cost,
+                message=f'Unsuccessful purchase {stock.name}')
+            notification.save()
             return 'Insufficient funds'
 
         profile.dividend_income = sum([
@@ -57,6 +61,11 @@ class MarketPlaceHandler:
             for mystock in MyStock.objects.filter(user=request.user)])
 
         profile.save()
+
+        notification = Notification(
+                user=user, cost=stock.cost,
+                message=f'Buy {stock.name}')
+        notification.save()
 
         return 'ok'
 
@@ -85,9 +94,19 @@ class MarketPlaceHandler:
 
         if act == 'sellall':
             profile.balance += (mystock.stock.cost * mystock.count)
+
+            notification = Notification(
+                user=request.user, cost=mystock.stock.cost * mystock.count,
+                message=f'Sell {mystock.stock.name}. Count: {mystock.count}')
+
             mystock.delete()
         else:
             profile.balance += mystock.stock.cost
+
+            notification = Notification(
+                user=request.user, cost=mystock.stock.cost * mystock.count,
+                message=f'Sell {mystock.stock.name}. Count: 1')
+
             mystock.count -= 1
             mystock.save()
 
@@ -99,6 +118,7 @@ class MarketPlaceHandler:
             for mystock in MyStock.objects.filter(user=request.user)])
 
         profile.save()
+        notification.save()
 
         return 'ok'
 
@@ -110,3 +130,7 @@ class MarketPlaceHandler:
                 request=request, template_name='marketplace/profile.html',
                 context={'user': request.user, 'mystocks':
                             MarketPlaceHandler.get_my_stocks(request.user)})})
+
+    @staticmethod
+    def get_notifications(request: object) -> object:
+        return Notification.objects.filter(user=request.user).order_by('-datetime')

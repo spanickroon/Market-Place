@@ -2,20 +2,20 @@
 {% load static%}
 {% block content %}
 <div class="notification-info-panel">
-    <label for="...">№</label>
-    <label for="...">Date</label>
-    <label for="...">Time</label>
-    <label for="...">Cost</label>
-    <label for="...">Message</label>
+    <p>№</p>
+    <p>Date</p>
+    <p>Time</p>
+    <p>Cost</p>
+    <p>Message</p>
 </div>
 <div class="list-notifications-container">
-    {% for item in 1234567899999999|make_list %}
+    {% for notification in notifications %}
     <div class="notification">
-        <label class="notification-number" for="...">{{item}}</label>
-        <label for="...">27.08.2020</label>
-        <label for="...">15:30:15</label>
-        <label for="...">3200$</label>
-        <p>Buying cannabis stock</p>
+        <p class="notification-number">{{ forloop.revcounter }}</p>
+        <p>{{ notification.datetime.day }}.{{ notification.datetime.month }}.{{ notification.datetime.year }}</p>
+        <p>{{ notification.datetime.hour }}:{{ notification.datetime.minute }}:{{ notification.datetime.second }}</p>
+        <p>{{ notification.cost }}$</p>
+        <p>{{ notification.message }}</p>
     </div>
     {% endfor %}
 </div>

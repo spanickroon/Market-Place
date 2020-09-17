@@ -53,7 +53,11 @@ class NotificationsView(View):
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
-        return render(request, template_name='index.html')
+        return render(
+            request, template_name='index.html',
+            context={
+                'notifications': MarketPlaceHandler.get_notifications(
+                    request)})
 
 
 class PasswordView(View):
