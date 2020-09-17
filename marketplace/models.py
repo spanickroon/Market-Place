@@ -56,3 +56,33 @@ class MyStock(models.Model):
     def __str__(self):
         """Funtion for output info about this mystock object."""
         return f'{self.user.username} - {self.stock.name} - {self.count}'
+
+
+class Notification(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE,
+        verbose_name='User')
+
+    date = models.DateField(
+        blank=True, null=True, verbose_name='Date')
+
+    time = models.DateTimeField(
+        blank=True, null=True, verbose_name='Time')
+
+    cost = models.IntegerField(
+        default=0, blank=True,
+        null=True, verbose_name='Cost')
+
+    message = models.CharField(
+        blank=True, null=True, verbose_name='Message',
+        max_length=100)
+
+    class Meta:
+        """Meta data."""
+        db_table = 'Notification'
+        verbose_name = 'Notification'
+        verbose_name_plural = 'Notifications'
+
+    def __str__(self) -> str:
+        """Funtion for output info about this profile object."""
+        return f'{self.user} - {self.message}'
