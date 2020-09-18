@@ -1,3 +1,24 @@
+function getStockValues() {
+    fetch('stockgrowth', 
+    {
+        method: 'POST',
+        headers: {'content-type': 'application/x-www-form-urlencoded', 'X-CSRFToken': getCookie('csrftoken') },
+    })
+    .then(response => {
+        if (response.status !== 200) {
+            return Promise.reject(); 
+        }
+        return response.json();
+    })
+    .then(response => {
+        if (response['message'] === 'ok') {
+            content_response = response['content'];
+        } 
+    })
+    .catch(() => console.log('error response'));
+    return content_response;
+}
+
 function getWindowSizes() {
     if (window.innerWidth >= 992) {
        return {width: 900, height: 400, fontTitle: 24, fontAxis: 22, fontValue: 16}
@@ -11,12 +32,18 @@ function getWindowSizes() {
 }
 
 function setUpCharts() {
-    var res1 = randomValues20(3200);
-    var res2 = randomValues20(3200);
+    var charts = [];
+
+    getStockValues().forEach(element => {
+        charts.push({
+            title: `${element.name} Stock Chart`,
+            chartID: `${element.name}_chart`,
+            values: element.values
+        })
+    });
 
     page = document.getElementById('stockgrowth-charts');
 
-    var charts = [{title: 'Cannabis Stock Chart', chartID: 'cannabis_chart', values: res1}, {title: 'Cannabis Stock Chart2', chartID: 'cannabis_chart2', values: res2}];
     let resultHtml = [];
 
     for (var chart in charts) {
@@ -25,20 +52,11 @@ function setUpCharts() {
     page.innerHTML = resultHtml.join('');
 
     setOnCallBack(charts);
-
-    function myLoop() {        
-        setTimeout(function() {  
-            var charts = [{title: 'Cannabis Stock Chart', chartID: 'cannabis_chart', values: randomValues(3200, res1)}, {title: 'Cannabis Stock Chart2', chartID: 'cannabis_chart2', values: randomValues(3200, res2)}];
-            setOnCallBack(charts);
-            myLoop();                  
-        }, 2000);
-    }
-    myLoop();
 }
 
 function setOnCallBack(charts) {
     google.charts.setOnLoadCallback(function() { 
-        drawChart(charts);               
+        drawChart(charts);            
     });
 }
 
@@ -52,7 +70,7 @@ function drawChart(charts) {
         var options = {
             width: sizes.width,
             height: sizes.height,
-            title: `${charts[chart].title}.\nDate ${('0' + newDate.getDate()).slice(-2)}.${('0' + newDate.getMonth()).slice(-2)}.${newDate.getFullYear()} ${('0' + newDate.getHours()).slice(-2)}:${('0' + newDate.getMinutes()).slice(-2)}:${('0' + newDate.getSeconds()).slice(-2)}. Price ${lastElelement[1]}$`,
+            title: `${charts[chart].title}.\nDate ${('0' + newDate.getDate()).slice(-2)}.${('0' + newDate.getMonth()).slice(-2)}.${newDate.getFullYear()} ${('0' + newDate.getHours()).slice(-2)}:${lastElelement[0]}. Price ${lastElelement[1].toFixed(2)}$`,
             titleTextStyle: {
                 color: '#FFFFFF',
                 fontSize: sizes.fontTitle,
@@ -107,33 +125,3 @@ function drawChart(charts) {
         areaChart.draw(data, options);
     }
 }
-
-/* Testing */
-
-function randomValues(startNumber, res) {
-    var newDate = new Date();
-    res.push(
-        [`${('0' + newDate.getMinutes()).slice(-2)}:${('0' + newDate.getSeconds()).slice(-2)}`, 
-        Math.floor(Math.random() * 1000) + startNumber]);
-    res.shift();
-    return res;
-}
-
-function randomValues20(startNumber) {
-    var newDate = new Date();
-    var res = [];
-
-    for (var i=0; i<20; i++) {
-        newDate.setSeconds(newDate.getSeconds() + 5);
-        res.push(
-            [`${('0' + newDate.getMinutes()).slice(-2)}:${('0' + (newDate.getSeconds())).slice(-2)}`, 
-            Math.floor(Math.random() * 1000) + startNumber]);
-    }
-
-    return res;
-}
-
-/* Test
-google.charts.load('current', {'packages':['corechart']});
-setUpCharts();
-*/

@@ -34,15 +34,18 @@
     <div class="page" id="editprofile">
         {% include 'marketplace/editprofile.html' %}
     </div>
+    <div class="page" id="pageloader">
+        {% include 'marketplace/pageloader.html' %}
+    </div>
     <div id="modal-popup">
         <h1 id="modal-popup-text"></h1>
         <button id="modal-popup-button">✕</button>
     </div>
 </body>
 <script src="{% static "js/spa.js" %}"></script>
-<script src="{% static "js/authentication/loginSignupRequests.js" %}"></script>
+<script src="{% static "js/authentication/authenticationRequests.js" %}"></script>
 <script src="{% static "js/authentication/main.js" %}"></script>
+<script src="{% static "js/marketplace/marketplaceRequests.js" %}"></script>
 <script src="{% static "js/marketplace/main.js" %}"></script>
 <script src="{% static "js/marketplace/googleCharts.js" %}"></script>
-<script src="{% static "js/marketplace/dragAndDrop.js" %}"></script>
 </html>

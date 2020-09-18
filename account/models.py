@@ -8,19 +8,19 @@ class Profile(models.Model):
         verbose_name='User')
 
     avatar = models.ImageField(
-        default='profile.svg',
+        default='img/profiles/profile.png',
         verbose_name='Avatar',
-        upload_to='profiles/', null=True, blank=True)
+        upload_to='img/profiles', null=True, blank=True)
 
-    balance = models.IntegerField(
-        default=10000, blank=True,
+    balance = models.FloatField(
+        default=5000, blank=True,
         null=True, verbose_name='Balance')
 
     deals_amount = models.IntegerField(
         default=0, blank=True,
         null=True, verbose_name='Amount of deals')
 
-    dividend_income = models.IntegerField(
+    dividend_income = models.FloatField(
         default=0, blank=True,
         null=True, verbose_name='Dividend income')
 

@@ -10,6 +10,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 
 from ..models import Profile
+from marketplace.models import MyStock
 
 
 class AuthenticationHandler:
@@ -42,7 +43,10 @@ class AuthenticationHandler:
                 'template': render_to_string(
                     request=request,
                     template_name='marketplace/profile.html',
-                    context={'user': request.user})})
+                    context={
+                        'user': request.user,
+                        'mystocks': MyStock.objects.filter(
+                            user=request.user)})})
 
     @staticmethod
     def signup_handler(request: object, signup_form: object) -> object:
@@ -60,3 +64,46 @@ class AuthenticationHandler:
         profile.save()
 
         return JsonResponse({'message': 'ok'})
+
+    @staticmethod
+    def change_password_handler(
+            request: object, change_password_form: object) -> object:
+
+        user = User.objects.get(username=request.user.username)
+
+        password1 = change_password_form.cleaned_data.get('password1')
+        password2 = change_password_form.cleaned_data.get('password2')
+
+        user.password = make_password(password2)
+        user.save()
+
+        login(request, user)
+
+        return JsonResponse({'message': 'ok'})
+
+    @staticmethod
+    def edit_pofile_handler(
+            request: object, edit_profile_info: object) -> object:
+        """Change user data in profile."""
+        new_username = edit_profile_info.cleaned_data.get('username')
+
+        if User.objects.filter(username=new_username).exists() \
+                and new_username != request.user.username:
+            return JsonResponse(
+                {'message': 'A user with this username already exists'})
+
+        user = User.objects.get(username=request.user.username)
+
+        user.username = new_username
+
+        user.profile.save()
+        user.save()
+
+        login(request, user)
+
+        return JsonResponse(
+            {'message': 'ok',
+                'template': render_to_string(
+                    request=request,
+                    template_name='marketplace/profile.html',
+                    context={'user': request.user})})

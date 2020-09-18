@@ -18,9 +18,11 @@ function hideModalPopUp(ev) {
 
 function setUpMarketplace() {
     var invalidPopupPassword = document.getElementById('invalid-popup-password-page');
+    var invalidPopupEditProfile = document.getElementById('invalid-popup-editprofile-page');
     var passwordText = 'The password must contain at least:\n1 Capital letter of the English alphabet\n1 Capital letter of the English alphabet\n1 Number\nHave a length of at least 8';
     var modalPopUpButton = document.getElementById('modal-popup-button');
 
+    setUpInvalidPopUp(invalidPopupEditProfile, document.getElementById('input-new-login'));
     setUpInvalidPopUp(invalidPopupPassword, document.getElementById('change-password-input'), passwordText);
     setUpInvalidPopUp(invalidPopupPassword, document.getElementById('change-password-input-repeat'), passwordText, true, document.getElementById('change-password-input'));
     
