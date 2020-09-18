@@ -3,7 +3,7 @@ import time
 import datetime
 import random
 
-from marketplace.models import Stock, Notification
+from marketplace.models import Stock, Notification, MyStock
 from account.models import Profile
 
 
@@ -51,5 +51,9 @@ class Procesing:
                     message='Deductions from dividends')
 
                 profile.balance += profile.dividend_income
+                profile.dividend_income = sum([
+                    mystock.stock.dividend_income * mystock.count
+                    for mystock in MyStock.objects.filter(user=profile.user)])
                 profile.save()
                 notification.save()
+            print(profile.dividend_income)
