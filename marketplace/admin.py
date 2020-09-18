@@ -1,7 +1,7 @@
 """This module contain class for work with model objects in admin panel."""
 
 from django.contrib import admin
-from .models import Stock, MyStock, Notification
+from .models import Stock, MyStock, Notification, StockGrowthRates
 
 
 @admin.register(Stock)
@@ -55,6 +55,24 @@ class AuthorAdmin(admin.ModelAdmin):
         verbose_name_plural = 'Notification'
         db_table = 'Notification'
         default_manager_name = 'Notification'
+
+    def save_model(self, request, obj, form, change):
+        obj.save()
+
+
+@admin.register(StockGrowthRates)
+class AuthorAdmin(admin.ModelAdmin):
+    """Notification class with list of filters and meta data."""
+
+    class Meta:
+        """Meta data."""
+
+        app_label = 'StockGrowthRates'
+        verbose_name = 'StockGrowthRates'
+        base_manager_name = 'StockGrowthRates'
+        verbose_name_plural = 'StockGrowthRates'
+        db_table = 'StockGrowthRates'
+        default_manager_name = 'StockGrowthRates'
 
     def save_model(self, request, obj, form, change):
         obj.save()

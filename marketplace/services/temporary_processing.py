@@ -3,7 +3,7 @@ import time
 import datetime
 import random
 
-from marketplace.models import Stock, Notification, MyStock
+from marketplace.models import Stock, Notification, MyStock, StockGrowthRates
 from account.models import Profile
 
 
@@ -31,12 +31,15 @@ class Procesing:
         second = datetime.datetime.now().second
 
         for stock in Stock.objects.all():
-            stock.cost = (stock.cost * random.uniform(0.4, 2))
-            stock.dividend_income = stock.cost * 0.01
+            stock.cost = (stock.cost * random.uniform(
+                StockGrowthRates.objects.all()[0].starting_multiplier,
+                StockGrowthRates.objects.all()[0].finite_factor))
+            stock.dividend_income = stock.cost * 0.001
 
             list_stoks = stock.string_to_json()
             if len(list_stoks) > 19:
                 del list_stoks[0]
+
             list_stoks.append([f'{minute:02d}:{second:02d}', stock.cost])
             stock.json_to_string(list_stoks)
             stock.save()
@@ -56,4 +59,3 @@ class Procesing:
                     for mystock in MyStock.objects.filter(user=profile.user)])
                 profile.save()
                 notification.save()
-            print(profile.dividend_income)

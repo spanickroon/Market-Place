@@ -97,3 +97,23 @@ class Notification(models.Model):
     def __str__(self) -> str:
         """Funtion for output info about this profile object."""
         return f'{self.user} - {self.message}'
+
+
+class StockGrowthRates(models.Model):
+    starting_multiplier = models.FloatField(
+        default=1, blank=True,
+        null=True, verbose_name='Starting multiplier')
+
+    finite_factor = models.FloatField(
+        default=1, blank=True,
+        null=True, verbose_name='Finite factor')
+
+    class Meta:
+        """Meta data."""
+        db_table = 'StockGrowthRates'
+        verbose_name = 'StockGrowthRates'
+        verbose_name_plural = 'StockGrowthRates'
+
+    def __str__(self) -> str:
+        """Funtion for output info about this profile object."""
+        return f'{self.starting_multiplier} - {self.finite_factor}'
