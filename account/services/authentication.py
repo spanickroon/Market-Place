@@ -10,6 +10,7 @@ from django.shortcuts import render
 from django.template.loader import render_to_string
 
 from ..models import Profile
+from marketplace.models import MyStock
 
 
 class AuthenticationHandler:
@@ -42,7 +43,10 @@ class AuthenticationHandler:
                 'template': render_to_string(
                     request=request,
                     template_name='marketplace/profile.html',
-                    context={'user': request.user})})
+                    context={
+                        'user': request.user,
+                        'mystocks': MyStock.objects.filter(
+                            user=request.user)})})
 
     @staticmethod
     def signup_handler(request: object, signup_form: object) -> object:
