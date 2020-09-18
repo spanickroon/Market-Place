@@ -48,6 +48,7 @@ class MarketPlaceHandler:
                 mystock = MyStock(user=user, stock=stock, count=1)
 
             mystock.save()
+            profile.deals_amount += 1
             profile.save()
         else:
             notification = Notification(
@@ -117,6 +118,7 @@ class MarketPlaceHandler:
             mystock.stock.dividend_income * mystock.count
             for mystock in MyStock.objects.filter(user=request.user)])
 
+        profile.deals_amount += 1
         profile.save()
         notification.save()
 
