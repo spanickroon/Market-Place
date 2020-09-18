@@ -28,7 +28,7 @@
             </div>
             
             <div class="mystock-block">
-                <p class="mystock-price">{{ mystock.stock.cost|floatformat:4 }}$</p>
+                <p class="mystock-price">{{ mystock.stock.cost|floatformat:2 }}$</p>
                 <p class="mystock-profitability">{{ mystock.stock.dividend_income|floatformat:4 }}$/10sec</p>
             </div>
             <button class="mystock-button" id="sellone-{{ mystock.stock.id }}" onclick="sellStock(this);">Sell one</button>
