@@ -1602,13 +1602,13 @@ input:required {
         border-radius: 42.5px;
     }
     
-    .profile-info > label {
+    .profile-info > p {
         font-size: 16px;
     
         margin-bottom: 10px;
     }
     
-    .additional-profile-info > label {
+    .additional-profile-info > p {
         font-size: 14px;
     }
     
@@ -1704,13 +1704,13 @@ input:required {
         border-radius: 25px;
     }
     
-    .profile-info > label {
+    .profile-info > p {
         font-size: 9px;
     
         margin-bottom: 10px;
     }
     
-    .additional-profile-info > label {
+    .additional-profile-info > p {
         font-size: 7px;
     }
     
@@ -1812,13 +1812,13 @@ input:required {
         border-radius: 50px;
     }
     
-    .profile-info > label {
+    .profile-info > p {
         font-size: 20px;
     
         margin-bottom: 10px;
     }
     
-    .additional-profile-info > label {
+    .additional-profile-info > p {
         font-size: 16px;
     }
     
@@ -1997,7 +1997,7 @@ input:required {
         border-radius: 15px;
     }
     
-    .notification-info-panel > label {
+    .notification-info-panel > p {
         font-size: 12px;
     }
 
@@ -2023,7 +2023,7 @@ input:required {
         border-radius: 15px;
     }
     
-    .notification > label, p {
+    .notification > p {
         font-size: 14px;
     }
     
@@ -2053,7 +2053,7 @@ input:required {
         border-radius: 10px;
     }
     
-    .notification-info-panel > label {
+    .notification-info-panel > p {
         font-size: 8px;
     }
 
@@ -2079,7 +2079,7 @@ input:required {
         border-radius: 10px;
     }
     
-    .notification > label, p {
+    .notification > p {
         font-size: 8px;
     }
     
@@ -2112,7 +2112,7 @@ input:required {
         overflow: hidden;
     }
     
-    .notification-info-panel > label {
+    .notification-info-panel > p {
         font-size: 12px;
     }
 
@@ -2139,12 +2139,17 @@ input:required {
     
         border-radius: 15px;
     }
-    
-    .notification > label, p {
-        font-size: 14px;
-    }
 
     .notification > p {
+        font-size: 14px;
+
+        text-align: center;
+
+        margin-bottom: 5px;
+    }
+
+    .notification-message {
+        font-size: 14px;
         grid-column-start: 1;
         grid-column-end: 5;
 
