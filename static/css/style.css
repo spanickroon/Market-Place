@@ -988,7 +988,7 @@ input:required {
     height: 400px;
 }
 
-.stock-article .stock-article-container > label {
+.stock-article .stock-article-container > p {
     display: block;
     text-align: center;
 }

@@ -6,9 +6,9 @@
         <article class="stock-article">
             <div class="stock-article-container">
                 <img class="img-stock" src="{{ stock.avatar.url }}" alt="">
-                <label class="stock-name" for="...">{{ stock.name }}</label>
-                <label class="stock-price" for="...">{{ stock.cost }}$</label>
-                <label class="stock-profitability" for="...">{{ stock.dividend_income }}$/min</label>
+                <p class="stock-name">{{ stock.name }}</p>
+                <p class="stock-price">{{ stock.cost|floatformat:2 }}$</p>
+                <p class="stock-profitability">{{ stock.dividend_income|floatformat:4 }}$/10sec</p>
                 <button class="stock-button" id="buystock-{{ stock.id }}" onclick="buyStock(this);">Buy</button>
             </div>
         </article>
