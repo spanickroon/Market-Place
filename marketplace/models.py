@@ -15,7 +15,7 @@ class Stock(models.Model):
         verbose_name='Avatar',
         upload_to='img/stocks', null=True, blank=True)
 
-    cost = models.IntegerField(
+    cost = models.FloatField(
         default=0, blank=True,
         null=True, verbose_name='Cost')
 

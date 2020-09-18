@@ -70,7 +70,7 @@ function drawChart(charts) {
         var options = {
             width: sizes.width,
             height: sizes.height,
-            title: `${charts[chart].title}.\nDate ${('0' + newDate.getDate()).slice(-2)}.${('0' + newDate.getMonth()).slice(-2)}.${newDate.getFullYear()} ${('0' + newDate.getHours()).slice(-2)}:${lastElelement[0]}. Price ${lastElelement[1]}$`,
+            title: `${charts[chart].title}.\nDate ${('0' + newDate.getDate()).slice(-2)}.${('0' + newDate.getMonth()).slice(-2)}.${newDate.getFullYear()} ${('0' + newDate.getHours()).slice(-2)}:${lastElelement[0]}. Price ${lastElelement[1].toFixed(2)}$`,
             titleTextStyle: {
                 color: '#FFFFFF',
                 fontSize: sizes.fontTitle,
