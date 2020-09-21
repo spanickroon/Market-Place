@@ -21,6 +21,7 @@ class AuthorAdmin(admin.ModelAdmin):
         default_manager_name = 'Stock'
 
     def save_model(self, request, obj, form, change):
+        """Model save method."""
         obj.save()
 
 
@@ -39,6 +40,7 @@ class AuthorAdmin(admin.ModelAdmin):
         default_manager_name = 'MyStock'
 
     def save_model(self, request, obj, form, change):
+        """Model save method."""
         obj.save()
 
 
@@ -57,6 +59,7 @@ class AuthorAdmin(admin.ModelAdmin):
         default_manager_name = 'Notification'
 
     def save_model(self, request, obj, form, change):
+        """Model save method."""
         obj.save()
 
 
@@ -75,4 +78,5 @@ class AuthorAdmin(admin.ModelAdmin):
         default_manager_name = 'StockGrowthRates'
 
     def save_model(self, request, obj, form, change):
+        """Model save method."""
         obj.save()

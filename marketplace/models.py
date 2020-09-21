@@ -1,3 +1,4 @@
+"""Module with models."""
 import json
 
 from django.db import models
@@ -6,6 +7,8 @@ from django.contrib.postgres.fields import ArrayField
 
 
 class Stock(models.Model):
+    """Stock model."""
+
     name = models.CharField(
         max_length=20, blank=True,
         null=True, verbose_name='Name')
@@ -28,13 +31,16 @@ class Stock(models.Model):
         blank=False, null=True, verbose_name='List costs')
 
     def json_to_string(self, json_value):
+        """String to json method."""
         self.list_costs = json.dumps(json_value)
 
     def string_to_json(self):
+        """Json to string method."""
         return json.loads(self.list_costs)
 
     class Meta:
         """Meta data."""
+
         db_table = 'Stock'
         verbose_name = 'Stock'
         verbose_name_plural = 'Stocks'
@@ -72,6 +78,8 @@ class MyStock(models.Model):
 
 
 class Notification(models.Model):
+    """Stock model."""
+
     user = models.ForeignKey(
         User, on_delete=models.CASCADE,
         verbose_name='User')
@@ -90,6 +98,7 @@ class Notification(models.Model):
 
     class Meta:
         """Meta data."""
+
         db_table = 'Notification'
         verbose_name = 'Notification'
         verbose_name_plural = 'Notifications'
@@ -100,6 +109,8 @@ class Notification(models.Model):
 
 
 class StockGrowthRates(models.Model):
+    """Stock model."""
+
     starting_multiplier = models.FloatField(
         default=1, blank=True,
         null=True, verbose_name='Starting multiplier')
@@ -110,6 +121,7 @@ class StockGrowthRates(models.Model):
 
     class Meta:
         """Meta data."""
+
         db_table = 'StockGrowthRates'
         verbose_name = 'StockGrowthRates'
         verbose_name_plural = 'StockGrowthRates'
