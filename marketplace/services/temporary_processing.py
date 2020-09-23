@@ -1,3 +1,4 @@
+"""The module for executing processes in parallel with starting the server."""
 from threading import Thread
 import time
 import datetime
@@ -8,7 +9,9 @@ from account.models import Profile
 
 
 def postpone(function):
+    """Stream creation decorator function."""
     def decorator(*args, **kwargs):
+        """Stream creation function."""
         t = Thread(target=function, args=args, kwargs=kwargs)
         t.daemon = True
         t.start()
@@ -16,10 +19,16 @@ def postpone(function):
 
 
 class Procesing:
+    """Class for executing processes in parallel with starting the server."""
 
     @staticmethod
     @postpone
     def all_proccesing():
+        """
+        Function that launches parallel processes.
+
+        With a clock cycle of 10 seconds.
+        """
         while True:
             time.sleep(10)
             Procesing.accrural_of_income()
@@ -27,6 +36,7 @@ class Procesing:
 
     @staticmethod
     def change_stock_prices():
+        """Stock price changes."""
         minute = datetime.datetime.now().minute
         second = datetime.datetime.now().second
 
@@ -46,6 +56,7 @@ class Procesing:
 
     @staticmethod
     def accrural_of_income():
+        """Foreign currency accruals of income."""
         for profile in Profile.objects.all():
             if profile.dividend_income != 0:
                 notification = Notification(

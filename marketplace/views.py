@@ -1,3 +1,4 @@
+"""Module with marketplace views."""
 from django.shortcuts import render, redirect
 from django.views import View
 from django.http import JsonResponse
@@ -12,10 +13,12 @@ from .services.marketplace import MarketPlaceHandler
 
 
 class StocksView(View):
+    """Stock view."""
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
+        """Get request stock view."""
         return render(
             request, template_name='index.html',
             context={
@@ -25,6 +28,7 @@ class StocksView(View):
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def post(self: object, request: object) -> object:
+        """Post request stock view."""
         if request.POST['message'] == 'buy':
             return MarketPlaceHandler.post_buy_stock(request)
         else:
@@ -32,10 +36,12 @@ class StocksView(View):
 
 
 class ProfileView(View):
+    """Profile view."""
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
+        """Get request profile view."""
         return render(
             request, template_name='index.html',
             context={
@@ -45,14 +51,17 @@ class ProfileView(View):
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def post(self: object, request: object) -> object:
+        """Post request profile view."""
         return MarketPlaceHandler.post_sell_stock(request)
 
 
 class NotificationsView(View):
+    """Notification view."""
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
+        """Get request notification view."""
         return render(
             request, template_name='index.html',
             context={
@@ -61,15 +70,18 @@ class NotificationsView(View):
 
 
 class PasswordView(View):
+    """Password view."""
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
+        """Get request passsword view."""
         return render(request, template_name='index.html')
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def post(self: object, request: object) -> object:
+        """Post request password view."""
         change_password_form = ChangePasswordForm(request.POST)
 
         if change_password_form.is_valid():
@@ -82,29 +94,34 @@ class PasswordView(View):
 
 
 class StockGrowthView(View):
+    """StockGrowth view."""
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
+        """Get request stockgrowth view."""
         return render(request, template_name='index.html')
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def post(self: object, request: object) -> object:
+        """Post request stockgrowth view."""
         return MarketPlaceHandler.post_request_stocks(request)
 
 
 class EditProfileView(View):
+    """Editpofile view."""
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def get(self: object, request: object) -> object:
+        """Get request editprofile view."""
         return render(request, template_name='index.html')
 
     @method_decorator(csrf_protect)
     @method_decorator(login_required(login_url='login'))
     def post(self: object, request: object) -> object:
-
+        """Post request editprofile view."""
         edit_profile_info = EditProfileInfo(request.POST)
 
         if edit_profile_info.is_valid():

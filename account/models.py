@@ -1,8 +1,11 @@
+"""Module with account models."""
 from django.db import models
 from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
+    """Profile model."""
+
     user = models.OneToOneField(
         User, on_delete=models.CASCADE,
         verbose_name='User')
@@ -26,6 +29,7 @@ class Profile(models.Model):
 
     class Meta:
         """Meta data."""
+
         db_table = 'Profile'
         verbose_name = 'Profile'
         verbose_name_plural = 'Profiles'

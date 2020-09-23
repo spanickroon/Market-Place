@@ -1,4 +1,4 @@
-'''This module contain functions for authentication.'''
+"""This module contain functions for marketplace."""
 
 import json
 import math
@@ -18,21 +18,26 @@ from django.core.paginator import Paginator
 
 
 class MarketPlaceHandler:
+    """The class that handles the main processes of the site."""
 
     @staticmethod
     def get_stocks(page: int) -> object:
+        """Getting specific promotions based on page number."""
         return Paginator(Stock.objects.all(), 8).page(page)
 
     @staticmethod
     def get_stocks_pages() -> list:
+        """Getting pages depending on the number of promotions."""
         return [i + 1 for i in range(math.ceil(len(Stock.objects.all()) / 8))]
 
     @staticmethod
     def get_my_stocks(user: object) -> object:
+        """A function that returns the user's stocks."""
         return MyStock.objects.filter(user=user)
 
     @staticmethod
     def buy_stock(request: object) -> str:
+        """Stock purchase processing function."""
         user = request.user
         stock_id = request.POST['stock_id'].split('-')[-1]
         stock = Stock.objects.get(id=stock_id)
@@ -72,6 +77,7 @@ class MarketPlaceHandler:
 
     @staticmethod
     def post_buy_stock(request: object) -> object:
+        """Balance update after purchase."""
         return JsonResponse({
             'message': MarketPlaceHandler.buy_stock(request),
             'profile': f'{request.user}, {request.user.profile.balance:.2f}$',
@@ -80,6 +86,7 @@ class MarketPlaceHandler:
 
     @staticmethod
     def post_display_stocks(request: object) -> object:
+        """Displaying stocks on the page."""
         page = request.POST['active_page']
         return JsonResponse({'message': 'ok', 'template': render_to_string(
                 request=request, template_name='marketplace/stocks.html',
@@ -89,6 +96,7 @@ class MarketPlaceHandler:
 
     @staticmethod
     def sell_stock(request: object) -> str:
+        """Sale of stocks."""
         profile = Profile.objects.get(user=request.user)
         act, stock_id = request.POST['stock_id'].split('-')
         mystock = MyStock.objects.get(stock=stock_id)
@@ -126,6 +134,7 @@ class MarketPlaceHandler:
 
     @staticmethod
     def post_sell_stock(request: object) -> object:
+        """Refreshing the page after purchase."""
         return JsonResponse({
             'message': MarketPlaceHandler.sell_stock(request),
             'template': render_to_string(
@@ -135,11 +144,13 @@ class MarketPlaceHandler:
 
     @staticmethod
     def get_notifications(request: object) -> object:
+        """Display notifications."""
         return Notification.objects.filter(
             user=request.user).order_by('-datetime')
 
     @staticmethod
     def get_values_stocks(request: object) -> list:
+        """Getting information about stocks."""
         res = []
         for stock in Stock.objects.all():
             res.append({'name': stock.name, 'values': stock.string_to_json()})
@@ -147,6 +158,7 @@ class MarketPlaceHandler:
 
     @staticmethod
     def post_request_stocks(request: object) -> object:
+        """Displaying information about stocks on a profile."""
         return JsonResponse({
             'message': 'ok',
             'content': MarketPlaceHandler.get_values_stocks(request)})

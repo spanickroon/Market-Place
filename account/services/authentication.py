@@ -1,4 +1,4 @@
-'''This module contain functions for authentication.'''
+"""This module contain functions for authentication."""
 
 import json
 from django.http import JsonResponse
@@ -14,9 +14,11 @@ from marketplace.models import MyStock
 
 
 class AuthenticationHandler:
+    """Class responsible for regulating authentication processes."""
 
     @staticmethod
     def form_erors(signup_form: object) -> str:
+        """Method that shows form errors."""
         res = []
         for k, v in json.loads(signup_form.errors.as_json()).items():
             res.append(v[0]['message'])
@@ -24,6 +26,7 @@ class AuthenticationHandler:
 
     @staticmethod
     def login_handler(request: object, login_form: object) -> object:
+        """Account login processing method."""
         request_username = login_form.cleaned_data['username']
 
         if not User.objects.filter(username=request_username).exists():
@@ -50,6 +53,7 @@ class AuthenticationHandler:
 
     @staticmethod
     def signup_handler(request: object, signup_form: object) -> object:
+        """Account registration processing method."""
         user = User(
             username=signup_form.cleaned_data['username'],
             password=make_password(signup_form.cleaned_data['password1'])
@@ -68,7 +72,7 @@ class AuthenticationHandler:
     @staticmethod
     def change_password_handler(
             request: object, change_password_form: object) -> object:
-
+        """The method that is responsible for changing the account password."""
         user = User.objects.get(username=request.user.username)
 
         password1 = change_password_form.cleaned_data.get('password1')

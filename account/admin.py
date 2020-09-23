@@ -21,4 +21,5 @@ class AuthorAdmin(admin.ModelAdmin):
         default_manager_name = 'Profile'
 
     def save_model(self, request, obj, form, change):
+        """Model save method."""
         obj.save()
